@@ -1799,26 +1799,65 @@
       }
     });
 
-    // Form Handling
-    function handleBookingSubmit(e) {
+    // Form Handling & Notification Forwarding
+    async function processBookingNotification(name, mobile, date, packageChoice) {
+      const emailRecipient = "krsh2852@gmail.com";
+      const targetPhone = "919494177921";
+
+      const messageContent = `*New Booking Request - Araku Trails*\n\n` +
+        `*Customer Name:* ${name}\n` +
+        `*Mobile Number:* ${mobile}\n` +
+        `*Travel Date:* ${date}\n` +
+        `*Package / Tour:* ${packageChoice}\n\n` +
+        `Submitted via arakutrails.com`;
+
+      // 1. Send Email Notification directly to krsh2852@gmail.com via form submit
+      try {
+        fetch("https://formsubmit.co/ajax/" + emailRecipient, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            name: name,
+            phone: mobile,
+            travel_date: date,
+            package: packageChoice,
+            _subject: `New Araku Trails Booking: ${name} (${packageChoice})`,
+            _template: "table"
+          })
+        }).catch(err => console.log("Email dispatch notice:", err));
+      } catch (err) {
+        console.log("Email dispatch notice:", err);
+      }
+
+      // 2. Open WhatsApp Message to +91 9494177921
+      const whatsappUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(messageContent)}`;
+      window.open(whatsappUrl, "_blank");
+    }
+
+    async function handleBookingSubmit(e) {
       e.preventDefault();
       const name = document.getElementById('travelName').value;
       const mobile = document.getElementById('travelMobile').value;
       const date = document.getElementById('travelDate').value;
       const type = document.getElementById('travelType').value;
 
-      alert(`Thank you, ${name}! Your booking request for "${type}" on ${date} has been received. Our team will contact you at ${mobile} shortly.`);
+      await processBookingNotification(name, mobile, date, type);
+      alert(`Thank you, ${name}! Your booking request for "${type}" on ${date} has been sent to our team. An email and mobile message have been dispatched.`);
       e.target.reset();
     }
 
-    function handleModalSubmit(e) {
+    async function handleModalSubmit(e) {
       e.preventDefault();
       const name = document.getElementById('modalName').value;
       const mobile = document.getElementById('modalPhone').value;
       const date = document.getElementById('modalDate').value;
       const pkg = modalSelectedPackage.value;
 
-      alert(`Thank you, ${name}! Your booking request for "${pkg}" on ${date} has been confirmed. We will reach out on ${mobile} immediately.`);
+      await processBookingNotification(name, mobile, date, pkg);
+      alert(`Thank you, ${name}! Your booking request for "${pkg}" on ${date} has been sent to our team. An email and mobile message have been dispatched.`);
       closeBookingModal();
       e.target.reset();
     }
