@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Araku Trails - Best Araku & Vizag Tour Packages | Hotels, Cabs & Activities</title>
+  <title>Araku Trails - Interactive Travel Portal | Tour Packages, Hotels & Adventures</title>
   <meta name="description"
     content="Explore the breathtaking hills and valleys of Araku, Vizag, Vanjangi & Lambasingi with Araku Trails. Best tour packages, hotel bookings, cab rentals and adventure activities.">
 
@@ -12,33 +12,39 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
     :root {
-      --primary: #059669;
-      --primary-light: #10b981;
-      --primary-dark: #047857;
-      --accent: #f59e0b;
-      --accent-hover: #d97706;
-      --dark-navy: #091512;
-      --dark-card: #0f241d;
-      --dark-card-hover: #15342a;
-      --border-color: rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(52, 211, 153, 0.4);
-      --text-main: #f9fafb;
-      --text-muted: #9ca3af;
-      --text-light: #d1d5db;
-      --gradient-brand: linear-gradient(135deg, #34d399 0%, #10b981 50%, #059669 100%);
-      --gradient-sunset: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
-      --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+      /* Futuristic Travel Dashboard Theme */
+      --shell-bg: #070d0a;
+      --sidebar-bg: #0b1511;
+      --panel-bg: #101c17;
+      --panel-hover: #15251f;
+      --panel-border: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(16, 185, 129, 0.35);
+      
+      --emerald-glow: #10b981;
+      --emerald-bright: #34d399;
+      --amber-star: #f59e0b;
+      --sky-azure: #0ea5e9;
+      
+      --text-heading: #f8fafc;
+      --text-body: #94a3b8;
+      --text-bright: #e2e8f0;
+      
+      --font-brand: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      
       --radius-sm: 8px;
       --radius-md: 14px;
       --radius-lg: 20px;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --radius-pill: 9999px;
+      
+      --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     * {
@@ -49,426 +55,458 @@
     }
 
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--dark-navy);
-      color: var(--text-main);
+      font-family: var(--font-body);
+      background-color: var(--shell-bg);
+      color: var(--text-bright);
       line-height: 1.6;
       overflow-x: hidden;
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    .brand-title {
-      font-family: 'Outfit', sans-serif;
-      letter-spacing: -0.02em;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-      transition: var(--transition);
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .container {
-      max-width: 1240px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
     /* ========================================================
-       TOP NOTIFICATION BAR
+       APPLICATION PORTAL / DASHBOARD LAYOUT
     ======================================================== */
-    .top-bar {
-      background: rgba(4, 120, 87, 0.25);
-      border-bottom: 1px solid rgba(52, 211, 153, 0.15);
-      font-size: 0.85rem;
-      padding: 0.5rem 0;
-      color: var(--text-light);
-      backdrop-filter: blur(10px);
-    }
-
-    .top-bar-content {
+    .app-layout {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .top-contact-links {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-    }
-
-    .top-contact-links a {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      color: var(--text-light);
-    }
-
-    .top-contact-links a:hover {
-      color: var(--primary-light);
-    }
-
-    .top-social-links {
-      display: flex;
-      gap: 1rem;
-    }
-
-    .top-social-links a:hover {
-      color: var(--primary-light);
-    }
-
-    /* ========================================================
-       MAIN NAVIGATION
-    ======================================================== */
-    .main-nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(9, 21, 18, 0.88);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-color);
-      transition: var(--transition);
-    }
-
-    .nav-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 0;
-    }
-
-    .brand-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: #fff;
-    }
-
-    .brand-logo .logo-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: var(--gradient-brand);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      color: #fff;
-      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
-    }
-
-    .brand-logo span span {
-      color: var(--primary-light);
-    }
-
-    .nav-menu {
-      display: flex;
-      align-items: center;
-      list-style: none;
-      gap: 1.75rem;
-    }
-
-    .nav-link {
-      font-weight: 500;
-      font-size: 0.95rem;
-      color: var(--text-light);
-      position: relative;
-      padding: 0.4rem 0;
-    }
-
-    .nav-link:hover,
-    .nav-link.active {
-      color: #fff;
-    }
-
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--gradient-brand);
-      transition: width 0.3s ease;
-      border-radius: 2px;
-    }
-
-    .nav-link:hover::after,
-    .nav-link.active::after {
+      min-height: 100vh;
       width: 100%;
     }
 
-    .nav-cta-btn {
-      background: var(--gradient-brand);
+    /* Fixed Left Explorer Console / Sidebar */
+    .app-sidebar {
+      width: 290px;
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--panel-border);
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1000;
+      padding: 1.5rem 1.25rem;
+      transition: var(--transition);
+    }
+
+    .brand-widget {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--panel-border);
+      margin-bottom: 1.5rem;
+    }
+
+    .brand-symbol {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: #fff;
+      font-size: 1.35rem;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    }
+
+    .brand-name {
+      font-family: var(--font-brand);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-name span {
+      color: var(--emerald-bright);
+    }
+
+    .console-nav-title {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-body);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+      padding-left: 0.5rem;
+    }
+
+    .console-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      flex-grow: 1;
+    }
+
+    .console-nav-item a {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.75rem 1rem;
+      border-radius: var(--radius-sm);
+      color: var(--text-body);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .console-nav-item a:hover,
+    .console-nav-item.active a {
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--emerald-bright);
+      border-left: 3px solid var(--emerald-bright);
+    }
+
+    .console-nav-item a i {
+      font-size: 1.05rem;
+      width: 20px;
+    }
+
+    /* Live Hotline Box in Sidebar */
+    .sidebar-hotline {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1rem;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    .hotline-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--emerald-bright);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--emerald-bright);
+      box-shadow: 0 0 8px var(--emerald-bright);
+      animation: pulse 1.6s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.4; }
+      50% { opacity: 1; }
+      100% { opacity: 0.4; }
+    }
+
+    .hotline-num {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      margin-bottom: 0.4rem;
+    }
+
+    .hotline-email {
+      font-size: 0.82rem;
+      color: var(--text-body);
+      text-decoration: none;
+      display: block;
+      word-break: break-all;
+    }
+
+    .hotline-email:hover,
+    .hotline-num:hover {
+      color: var(--emerald-bright);
+    }
+
+    /* Main Working Area */
+    .app-main {
+      margin-left: 290px;
+      flex-grow: 1;
+      padding: 1.75rem 2.25rem;
+      min-width: 0;
+    }
+
+    /* Top Action Header */
+    .main-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--sidebar-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .topbar-status {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-body);
+      font-family: var(--font-mono);
+    }
+
+    .topbar-status span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn-quick-book {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius-pill);
       padding: 0.65rem 1.4rem;
-      border-radius: 9999px;
+      font-size: 0.88rem;
       font-weight: 600;
-      font-size: 0.9rem;
+      cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+      transition: var(--transition);
     }
 
-    .nav-cta-btn:hover {
+    .btn-quick-book:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
     }
 
-    .hamburger {
+    /* Mobile Menu Toggle */
+    .mobile-menu-btn {
       display: none;
       background: none;
       border: none;
       color: #fff;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       cursor: pointer;
     }
 
     /* ========================================================
-       HERO SLIDER / SHOWCASE
+       HERO SPOTLIGHT DASHBOARD CAROUSEL
     ======================================================== */
-    .hero-section {
+    .hero-spotlight {
       position: relative;
-      min-height: 85vh;
-      display: flex;
-      align-items: center;
+      border-radius: var(--radius-lg);
       overflow: hidden;
+      min-height: 440px;
+      display: flex;
+      align-items: flex-end;
+      padding: 3rem 2.5rem;
+      margin-bottom: 2.5rem;
+      border: 1px solid var(--panel-border);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
     }
 
-    .hero-bg-container {
+    .spotlight-bg-wrap {
       position: absolute;
       inset: 0;
       z-index: 1;
     }
 
-    .hero-slide {
+    .spotlight-slide {
       position: absolute;
       inset: 0;
       opacity: 0;
-      transition: opacity 1.2s ease-in-out;
       background-size: cover;
       background-position: center;
+      transition: opacity 1.2s ease-in-out, transform 6s ease;
+      transform: scale(1.05);
     }
 
-    .hero-slide.active {
+    .spotlight-slide.active {
       opacity: 1;
+      transform: scale(1);
     }
 
-    .hero-overlay {
+    .spotlight-gradient {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg,
-          rgba(9, 21, 18, 0.6) 0%,
-          rgba(9, 21, 18, 0.85) 70%,
-          rgba(9, 21, 18, 1) 100%);
+      background: linear-gradient(180deg, rgba(7, 13, 10, 0.2) 0%, rgba(7, 13, 10, 0.95) 90%);
       z-index: 2;
     }
 
-    .hero-content {
+    .spotlight-content {
       position: relative;
       z-index: 3;
-      padding: 4rem 0 6rem;
-      max-width: 800px;
+      max-width: 780px;
     }
 
-    .hero-badge {
+    .spotlight-tag {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      background: rgba(52, 211, 153, 0.15);
-      border: 1px solid rgba(52, 211, 153, 0.35);
-      color: var(--primary-light);
-      padding: 0.4rem 1.1rem;
-      border-radius: 9999px;
-      font-size: 0.85rem;
+      gap: 0.4rem;
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid var(--border-accent);
+      color: var(--emerald-bright);
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 1.5rem;
-      backdrop-filter: blur(10px);
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
     }
 
-    .hero-title {
-      font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+    .spotlight-title {
+      font-family: var(--font-brand);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
       font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: 1.2rem;
       color: #fff;
+      line-height: 1.15;
+      margin-bottom: 0.8rem;
     }
 
-    .hero-title span {
-      background: var(--gradient-brand);
+    .spotlight-title span {
+      background: linear-gradient(135deg, #34d399 0%, #a7f3d0 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .hero-description {
-      font-size: 1.2rem;
-      color: var(--text-light);
-      line-height: 1.7;
-      margin-bottom: 2rem;
-      max-width: 680px;
+    .spotlight-desc {
+      color: var(--text-bright);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+      max-width: 650px;
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .btn-primary {
-      background: var(--gradient-brand);
-      color: #fff;
-      padding: 0.9rem 2rem;
-      border-radius: 9999px;
-      font-weight: 600;
-      font-size: 1rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4);
-      cursor: pointer;
-      border: none;
-      transition: var(--transition);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.6);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #fff;
-      padding: 0.9rem 2rem;
-      border-radius: 9999px;
-      font-weight: 600;
-      font-size: 1rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      backdrop-filter: blur(10px);
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.16);
-      transform: translateY(-2px);
-    }
-
-    .slider-dots {
+    .spotlight-controls {
       position: absolute;
-      bottom: 2.5rem;
-      right: 2rem;
+      bottom: 2rem;
+      right: 2.5rem;
       z-index: 4;
       display: flex;
-      gap: 0.6rem;
+      gap: 0.5rem;
     }
 
-    .slider-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
+    .spotlight-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: var(--radius-pill);
       background: rgba(255, 255, 255, 0.3);
       border: none;
       cursor: pointer;
       transition: var(--transition);
     }
 
-    .slider-dot.active {
-      width: 32px;
-      border-radius: 9999px;
-      background: var(--primary-light);
+    .spotlight-dot.active {
+      width: 28px;
+      background: var(--emerald-bright);
     }
 
     /* ========================================================
-       BOOKING BAR (QUICK BOOKING ENGINE)
+       INTEGRATED BOOKING CONSOLE PANEL
     ======================================================== */
-    .booking-bar-wrapper {
-      position: relative;
-      z-index: 10;
-      margin-top: -3.5rem;
-      padding: 0 1rem;
-    }
-
-    .booking-bar {
-      background: rgba(18, 38, 31, 0.85);
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
-      border: 1px solid var(--border-color);
+    .booking-console-card {
+      background: var(--panel-bg);
+      border: 1px solid var(--border-accent);
       border-radius: var(--radius-lg);
-      padding: 1.5rem 2rem;
-      box-shadow: var(--shadow-lg);
+      padding: 2rem 2.25rem;
+      margin-bottom: 3.5rem;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
     }
 
-    .booking-form {
+    .console-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--panel-border);
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .console-header-title {
+      font-family: var(--font-brand);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .console-header-title i {
+      color: var(--emerald-bright);
+    }
+
+    .console-header-badge {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--emerald-bright);
+      background: rgba(16, 185, 129, 0.1);
+      padding: 0.3rem 0.75rem;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+
+    .booking-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) 160px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) 180px;
       gap: 1.25rem;
       align-items: end;
     }
 
-    .form-group {
+    .field-wrapper {
       display: flex;
       flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .field-wrapper label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-body);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
       gap: 0.4rem;
     }
 
-    .form-group label {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--primary-light);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .form-control {
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+    .dash-input {
+      background: var(--shell-bg);
+      border: 1px solid var(--panel-border);
       border-radius: var(--radius-sm);
       color: #fff;
       padding: 0.8rem 1rem;
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       outline: none;
-      transition: var(--transition);
       font-family: inherit;
+      transition: var(--transition);
     }
 
-    .form-control:focus {
-      border-color: var(--primary-light);
-      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+    .dash-input:focus {
+      border-color: var(--emerald-bright);
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.25);
     }
 
-    .form-control option {
-      background: #0f241d;
-      color: #fff;
-    }
-
-    .btn-book-now {
-      background: var(--gradient-brand);
+    .btn-exec-booking {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
       color: #fff;
       border: none;
       border-radius: var(--radius-sm);
       padding: 0.85rem 1rem;
+      font-family: var(--font-brand);
       font-weight: 700;
       font-size: 1rem;
       cursor: pointer;
@@ -476,618 +514,550 @@
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      transition: var(--transition);
       height: 48px;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+      transition: var(--transition);
     }
 
-    .btn-book-now:hover {
-      background: #059669;
+    .btn-exec-booking:hover {
       transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(16, 185, 129, 0.6);
     }
 
     /* ========================================================
-       SECTION HEADINGS
+       TOUR PACKAGES (DASHBOARD CARDS & METRICS)
     ======================================================== */
-    .section-header {
-      text-align: center;
-      max-width: 680px;
-      margin: 0 auto 3.5rem;
+    .section-portal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
-    .section-subtitle {
-      color: var(--primary-light);
-      font-size: 0.9rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.5rem;
-      display: inline-block;
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 3.8vw, 2.75rem);
+    .portal-heading h2 {
+      font-family: var(--font-brand);
+      font-size: 2rem;
       font-weight: 800;
       color: #fff;
       line-height: 1.2;
     }
 
-    .section-title span {
-      background: var(--gradient-brand);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .portal-heading h2 span {
+      color: var(--emerald-bright);
     }
 
-    /* ========================================================
-       TOUR PACKAGES GRID
-    ======================================================== */
-    .packages-section {
-      padding: 6.5rem 0 5rem;
+    .portal-heading p {
+      color: var(--text-body);
+      font-size: 0.95rem;
+      margin-top: 0.3rem;
     }
 
-    .packages-grid {
+    .portal-stats-pills {
+      display: flex;
+      gap: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+    }
+
+    .stat-pill {
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--radius-pill);
+      color: var(--text-body);
+    }
+
+    .stat-pill strong {
+      color: var(--emerald-bright);
+    }
+
+    .dash-packages-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 2rem;
+      gap: 1.75rem;
+      margin-bottom: 4rem;
     }
 
-    .package-card {
-      background: var(--dark-card);
-      border: 1px solid var(--border-color);
+    .dash-pack-card {
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
       border-radius: var(--radius-md);
       overflow: hidden;
-      transition: var(--transition);
       display: flex;
       flex-direction: column;
+      transition: var(--transition);
     }
 
-    .package-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--border-hover);
-      box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.6), 0 0 20px rgba(16, 185, 129, 0.2);
+    .dash-pack-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-accent);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(16, 185, 129, 0.2);
+      background: var(--panel-hover);
     }
 
-    .package-image-wrap {
+    .pack-thumb-box {
       position: relative;
-      height: 220px;
+      height: 200px;
       overflow: hidden;
     }
 
-    .package-image-wrap img {
+    .pack-thumb-box img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.6s ease;
     }
 
-    .package-card:hover .package-image-wrap img {
+    .dash-pack-card:hover .pack-thumb-box img {
       transform: scale(1.08);
     }
 
-    .package-badge {
+    .pack-duration-chip {
       position: absolute;
-      top: 1rem;
-      left: 1rem;
-      background: rgba(9, 21, 18, 0.8);
+      top: 0.85rem;
+      left: 0.85rem;
+      background: rgba(7, 13, 10, 0.85);
       backdrop-filter: blur(8px);
-      color: var(--primary-light);
-      padding: 0.35rem 0.85rem;
-      border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      border: 1px solid rgba(52, 211, 153, 0.3);
+      color: var(--emerald-bright);
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      border: 1px solid rgba(16, 185, 129, 0.3);
     }
 
-    .package-rating {
+    .pack-score-chip {
       position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: rgba(0, 0, 0, 0.75);
+      top: 0.85rem;
+      right: 0.85rem;
+      background: rgba(7, 13, 10, 0.85);
       backdrop-filter: blur(8px);
-      color: #fbbf24;
-      padding: 0.35rem 0.75rem;
-      border-radius: 9999px;
-      font-size: 0.78rem;
+      color: var(--amber-star);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
       font-weight: 700;
       display: flex;
       align-items: center;
       gap: 0.3rem;
     }
 
-    .package-body {
-      padding: 1.5rem;
+    .pack-card-content {
+      padding: 1.4rem;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
     }
 
-    .package-meta {
+    .pack-features-line {
       display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 0.8rem;
+      gap: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-body);
+      margin-bottom: 0.6rem;
     }
 
-    .package-meta span {
+    .pack-features-line span {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
     }
 
-    .package-title {
+    .pack-name {
+      font-family: var(--font-brand);
       font-size: 1.25rem;
       font-weight: 700;
       color: #fff;
-      margin-bottom: 0.6rem;
-      line-height: 1.35;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
     }
 
-    .package-desc {
-      color: var(--text-muted);
-      font-size: 0.9rem;
+    .pack-summary {
+      color: var(--text-body);
+      font-size: 0.88rem;
       margin-bottom: 1.5rem;
+      line-height: 1.6;
       flex-grow: 1;
     }
 
-    .package-footer {
+    .pack-card-foot {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-top: 1px solid var(--border-color);
-      padding-top: 1.2rem;
+      border-top: 1px solid var(--panel-border);
+      padding-top: 1rem;
       margin-top: auto;
     }
 
-    .package-price {
+    .pack-rate-tag {
       display: flex;
       flex-direction: column;
     }
 
-    .price-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
+    .rate-micro {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-body);
       text-transform: uppercase;
     }
 
-    .price-value {
+    .rate-amount {
+      font-family: var(--font-brand);
       font-size: 1.35rem;
       font-weight: 800;
-      color: var(--primary-light);
+      color: var(--emerald-bright);
     }
 
-    .btn-card-action {
-      background: rgba(52, 211, 153, 0.12);
-      border: 1px solid rgba(52, 211, 153, 0.3);
-      color: var(--primary-light);
-      padding: 0.55rem 1.1rem;
-      border-radius: 9999px;
+    .btn-pack-select {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--emerald-bright);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-pill);
       font-size: 0.85rem;
       font-weight: 600;
+      cursor: pointer;
       transition: var(--transition);
     }
 
-    .btn-card-action:hover {
-      background: var(--primary);
+    .btn-pack-select:hover {
+      background: var(--emerald-glow);
       color: #fff;
     }
 
     /* ========================================================
-       SPECIALIZED EXPERIENCES (FAMILY, CORPORATE, STUDENT)
+       SPECIAL TRAVEL TILES & EXPERIENCES
     ======================================================== */
-    .specializations-section {
-      padding: 5rem 0;
-      background: linear-gradient(180deg, rgba(9, 21, 18, 0.5) 0%, rgba(15, 36, 29, 0.6) 100%);
-      border-top: 1px solid var(--border-color);
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .specs-grid {
+    .specialty-dash-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 1.75rem;
+      margin-bottom: 4rem;
     }
 
-    .spec-card {
-      background: var(--dark-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 2.5rem 2rem;
-      text-align: center;
-      position: relative;
+    .specialty-tile {
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius-md);
+      padding: 2.25rem 1.75rem;
       transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      position: relative;
     }
 
-    .spec-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--border-hover);
-      box-shadow: var(--shadow-lg);
+    .specialty-tile:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-4px);
     }
 
-    .spec-icon-box {
-      width: 76px;
-      height: 76px;
-      border-radius: 20px;
-      background: rgba(52, 211, 153, 0.12);
-      border: 1px solid rgba(52, 211, 153, 0.3);
+    .specialty-avatar-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
-      color: var(--primary-light);
-      margin-bottom: 1.5rem;
-      transition: var(--transition);
-    }
-
-    .spec-card:hover .spec-icon-box {
-      background: var(--gradient-brand);
-      color: #fff;
-      transform: rotate(5deg) scale(1.05);
-    }
-
-    .spec-title {
-      font-size: 1.45rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 1rem;
-    }
-
-    .spec-divider {
-      width: 40px;
-      height: 3px;
-      background: var(--primary-light);
-      border-radius: 9999px;
+      font-size: 1.75rem;
+      color: var(--emerald-bright);
       margin-bottom: 1.25rem;
     }
 
-    .spec-desc {
-      color: var(--text-muted);
-      font-size: 0.95rem;
+    .specialty-title {
+      font-family: var(--font-brand);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+
+    .specialty-desc {
+      color: var(--text-body);
+      font-size: 0.9rem;
       line-height: 1.7;
     }
 
     /* ========================================================
-       ACTIVITIES & ADVENTURES SECTION
+       ACTIVITIES & ADVENTURE CONSOLE
     ======================================================== */
-    .activities-section {
-      padding: 6rem 0;
-    }
-
-    .activities-grid {
+    .dash-activity-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.5rem;
+      margin-bottom: 4rem;
     }
 
-    .activity-card {
+    .activity-deck-card {
       position: relative;
       border-radius: var(--radius-md);
       overflow: hidden;
-      height: 280px;
-      box-shadow: var(--shadow-sm);
+      height: 270px;
       cursor: pointer;
+      border: 1px solid var(--panel-border);
+      transition: var(--transition);
     }
 
-    .activity-img {
+    .activity-deck-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--emerald-bright);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+    }
+
+    .act-bg-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.6s ease;
     }
 
-    .activity-card:hover .activity-img {
+    .activity-deck-card:hover .act-bg-img {
       transform: scale(1.1);
     }
 
-    .activity-overlay {
+    .act-gradient-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(9, 21, 18, 0.9) 100%);
+      background: linear-gradient(180deg, rgba(7, 13, 10, 0.1) 0%, rgba(7, 13, 10, 0.95) 100%);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
       padding: 1.5rem;
-      transition: var(--transition);
     }
 
-    .activity-card:hover .activity-overlay {
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(5, 150, 105, 0.85) 100%);
+    .act-category-code {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--emerald-bright);
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
     }
 
-    .activity-title {
+    .act-label {
+      font-family: var(--font-brand);
       font-size: 1.3rem;
       font-weight: 700;
-      color: #fff;
-      margin-bottom: 0.3rem;
-    }
-
-    .activity-tag {
-      font-size: 0.8rem;
-      color: var(--primary-light);
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    .activity-card:hover .activity-tag {
       color: #fff;
     }
 
     /* ========================================================
-       WHY CHOOSE US / FEATURES
+       WHY US / VALUE METRICS
     ======================================================== */
-    .why-us-section {
-      padding: 5rem 0;
-      background: var(--dark-card);
-      border-top: 1px solid var(--border-color);
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .features-grid {
+    .features-dash-row {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
     }
 
-    .feature-item {
-      padding: 2rem;
-      background: rgba(9, 21, 18, 0.6);
-      border: 1px solid var(--border-color);
+    .feature-metric-card {
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
       border-radius: var(--radius-md);
+      padding: 1.75rem;
       transition: var(--transition);
-      text-align: center;
     }
 
-    .feature-item:hover {
-      border-color: var(--primary-light);
-      transform: translateY(-4px);
+    .feature-metric-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-3px);
     }
 
-    .feature-icon {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 1.25rem;
-      border-radius: 16px;
-      background: rgba(52, 211, 153, 0.1);
+    .metric-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(16, 185, 129, 0.1);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.75rem;
-      color: var(--primary-light);
+      color: var(--emerald-bright);
+      font-size: 1.35rem;
+      margin-bottom: 1rem;
     }
 
-    .feature-title {
-      font-size: 1.2rem;
+    .metric-label {
+      font-family: var(--font-brand);
+      font-size: 1.15rem;
       font-weight: 700;
       color: #fff;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.5rem;
     }
 
-    .feature-desc {
-      font-size: 0.9rem;
-      color: var(--text-muted);
+    .metric-explain {
+      color: var(--text-body);
+      font-size: 0.88rem;
       line-height: 1.6;
     }
 
     /* ========================================================
-       TESTIMONIALS SECTION
+       TESTIMONIALS LOGS
     ======================================================== */
-    .testimonials-section {
-      padding: 6rem 0;
-    }
-
-    .testimonials-grid {
+    .testimonial-dash-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
+      gap: 1.75rem;
+      margin-bottom: 4rem;
     }
 
-    .testimonial-card {
-      background: var(--dark-card);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      padding: 2.2rem;
+    .review-log-card {
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius-md);
+      padding: 2rem 1.75rem;
       position: relative;
       transition: var(--transition);
     }
 
-    .testimonial-card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-4px);
+    .review-log-card:hover {
+      border-color: var(--border-accent);
     }
 
-    .quote-icon {
-      font-size: 2.2rem;
-      color: rgba(52, 211, 153, 0.25);
-      margin-bottom: 1rem;
+    .quote-badge-icon {
+      font-size: 1.75rem;
+      color: rgba(16, 185, 129, 0.25);
+      margin-bottom: 0.75rem;
     }
 
-    .testimonial-text {
-      color: var(--text-light);
-      font-size: 0.95rem;
+    .review-statement {
+      color: var(--text-bright);
+      font-size: 0.92rem;
       line-height: 1.7;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.5rem;
       font-style: italic;
     }
 
-    .reviewer-info {
+    .client-data-box {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.85rem;
     }
 
-    .reviewer-avatar {
-      width: 52px;
-      height: 52px;
+    .client-avatar-img {
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
-      border: 2px solid var(--primary-light);
+      border: 2px solid var(--emerald-bright);
       object-fit: cover;
     }
 
-    .reviewer-name {
-      font-size: 1.05rem;
+    .client-name-tag {
+      font-family: var(--font-brand);
+      font-size: 1rem;
       font-weight: 700;
       color: #fff;
     }
 
-    .reviewer-role {
-      font-size: 0.8rem;
-      color: var(--primary-light);
+    .client-loc-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--emerald-bright);
     }
 
     /* ========================================================
-       CALL TO ACTION BANNER
+       DASHBOARD BOTTOM CALLOUT
     ======================================================== */
-    .cta-banner {
-      padding: 5rem 0;
-      background: radial-gradient(circle at 50% 50%, rgba(5, 150, 105, 0.3) 0%, rgba(9, 21, 18, 0.95) 100%);
-      position: relative;
-      border-top: 1px solid var(--border-color);
+    .dash-callout-panel {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(11, 21, 17, 0.95) 100%);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-lg);
+      padding: 3rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
     }
 
-    .cta-content {
-      text-align: center;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-
-    .cta-title {
-      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+    .callout-text h2 {
+      font-family: var(--font-brand);
+      font-size: 2rem;
       font-weight: 800;
       color: #fff;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
 
-    .cta-desc {
-      font-size: 1.15rem;
-      color: var(--text-light);
-      margin-bottom: 2rem;
+    .callout-text p {
+      color: var(--text-body);
+      font-size: 1rem;
+      max-width: 600px;
     }
 
-    .cta-buttons {
+    .callout-btn-group {
       display: flex;
-      justify-content: center;
       gap: 1rem;
       flex-wrap: wrap;
     }
 
-    /* ========================================================
-       FOOTER
-    ======================================================== */
-    .site-footer {
-      background: #060e0c;
-      border-top: 1px solid var(--border-color);
-      padding: 4.5rem 0 2rem;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1.5fr;
-      gap: 3rem;
-      margin-bottom: 3.5rem;
-    }
-
-    .footer-col h4 {
-      font-size: 1.15rem;
+    .btn-callout-call {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
       color: #fff;
-      font-weight: 700;
-      margin-bottom: 1.4rem;
-      position: relative;
+      text-decoration: none;
+      padding: 0.85rem 1.6rem;
+      border-radius: var(--radius-pill);
+      font-weight: 600;
+      font-size: 0.92rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
     }
 
-    .footer-col h4::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 32px;
-      height: 2px;
-      background: var(--primary-light);
+    .btn-callout-chat {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.85rem 1.6rem;
+      border-radius: var(--radius-pill);
+      font-weight: 600;
+      font-size: 0.92rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
-    .footer-about p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-    }
-
-    .footer-links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .footer-links a {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    .footer-links a:hover {
-      color: var(--primary-light);
-      padding-left: 5px;
-    }
-
-    .footer-contact-item {
-      display: flex;
-      gap: 0.85rem;
-      margin-bottom: 1.1rem;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      align-items: flex-start;
-    }
-
-    .footer-contact-item i {
-      color: var(--primary-light);
-      margin-top: 0.2rem;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      padding-top: 2rem;
+    /* Footer Meta */
+    .dash-footer-meta {
+      border-top: 1px solid var(--panel-border);
+      padding: 2rem 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
-      color: var(--text-muted);
-      font-size: 0.85rem;
+      color: var(--text-body);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
     }
 
-    .footer-social-icons {
+    .footer-quick-contacts {
       display: flex;
-      gap: 1rem;
-    }
-
-    .social-btn {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.05);
-      display: flex;
+      gap: 1.5rem;
       align-items: center;
-      justify-content: center;
-      color: var(--text-light);
-      transition: var(--transition);
+      flex-wrap: wrap;
     }
 
-    .social-btn:hover {
-      background: var(--primary-light);
-      color: #fff;
-      transform: translateY(-2px);
+    .footer-quick-contacts a {
+      color: var(--text-bright);
+      text-decoration: none;
     }
 
-    /* Modal for Quick Booking */
+    .footer-quick-contacts a:hover {
+      color: var(--emerald-bright);
+    }
+
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.85);
       backdrop-filter: blur(8px);
       z-index: 2000;
       align-items: center;
@@ -1100,14 +1070,14 @@
     }
 
     .modal-box {
-      background: var(--dark-card);
-      border: 1px solid var(--border-hover);
+      background: var(--panel-bg);
+      border: 1px solid var(--border-accent);
       border-radius: var(--radius-lg);
       padding: 2.5rem 2rem;
-      max-width: 500px;
+      max-width: 480px;
       width: 100%;
       position: relative;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
     }
 
     .modal-close {
@@ -1116,8 +1086,8 @@
       right: 1.25rem;
       background: none;
       border: none;
-      color: var(--text-muted);
-      font-size: 1.5rem;
+      color: var(--text-body);
+      font-size: 1.4rem;
       cursor: pointer;
     }
 
@@ -1125,45 +1095,33 @@
       color: #fff;
     }
 
-    /* Responsive Queries */
-    @media (max-width: 992px) {
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .app-sidebar {
+        transform: translateX(-100%);
+      }
+      .app-sidebar.open {
+        transform: translateX(0);
+      }
+      .app-main {
+        margin-left: 0;
+        padding: 1.5rem 1rem;
+      }
+      .mobile-menu-btn {
+        display: block;
       }
     }
 
     @media (max-width: 768px) {
-      .nav-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: #091512;
-        flex-direction: column;
-        padding: 1.5rem;
-        border-bottom: 1px solid var(--border-color);
-        gap: 1rem;
-      }
-
-      .nav-menu.open {
-        display: flex;
-      }
-
-      .hamburger {
-        display: block;
-      }
-
-      .booking-form {
+      .booking-grid {
         grid-template-columns: 1fr;
       }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
+      .hero-spotlight {
+        padding: 2rem 1.5rem;
+        min-height: 380px;
       }
-
-      .top-bar-content {
-        justify-content: center;
+      .dash-callout-panel {
+        padding: 2rem 1.5rem;
       }
     }
   </style>
@@ -1171,114 +1129,124 @@
 
 <body>
 
-  <!-- Top Notification & Quick Contacts -->
-  <div class="top-bar">
-    <div class="container top-bar-content">
-      <div class="top-contact-links">
-        <a href="tel:+919494177921"><i class="fa-solid fa-phone"></i> +91 9494177921</a>
-        <a href="mailto:krsh2852@gmail.com"><i class="fa-solid fa-envelope"></i> krsh2852@gmail.com</a>
-        <span><i class="fa-solid fa-location-dot"></i> Vizag &amp; Araku Valley, AP</span>
-      </div>
-      <div class="top-social-links">
-        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-      </div>
-    </div>
-  </div>
+  <div class="app-layout">
 
-  <!-- Main Navigation -->
-  <header class="main-nav">
-    <div class="container nav-wrapper">
-      <a href="#" class="brand-logo">
-        <div class="logo-icon"><i class="fa-solid fa-mountain-sun"></i></div>
-        <span>Araku <span>Trails</span></span>
-      </a>
+    <!-- Fixed Left Explorer Console / Sidebar -->
+    <aside class="app-sidebar" id="appSidebar">
+      <div class="brand-widget">
+        <div class="brand-symbol"><i class="fa-solid fa-mountain-sun"></i></div>
+        <div class="brand-name">Araku <span>Trails</span></div>
+      </div>
 
-      <ul class="nav-menu" id="navMenu">
-        <li><a href="#home" class="nav-link active">Home</a></li>
-        <li><a href="#about" class="nav-link">About Us</a></li>
-        <li><a href="#packages" class="nav-link">Tour Packages</a></li>
-        <li><a href="#activities" class="nav-link">Activities</a></li>
-        <li><a href="#specialties" class="nav-link">Special Tours</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
+      <div class="console-nav-title">Navigation Console</div>
+      <ul class="console-nav-list">
+        <li class="console-nav-item active"><a href="#home"><i class="fa-solid fa-compass"></i> Home Spotlight</a></li>
+        <li class="console-nav-item"><a href="#booking-console"><i class="fa-solid fa-calendar-check"></i> Booking Console</a></li>
+        <li class="console-nav-item"><a href="#packages"><i class="fa-solid fa-layer-group"></i> Tour Packages</a></li>
+        <li class="console-nav-item"><a href="#specialties"><i class="fa-solid fa-crown"></i> Special Tours</a></li>
+        <li class="console-nav-item"><a href="#activities"><i class="fa-solid fa-parachute-box"></i> Activities</a></li>
+        <li class="console-nav-item"><a href="#about"><i class="fa-solid fa-shield-halved"></i> Why Araku Trails</a></li>
+        <li class="console-nav-item"><a href="#contact"><i class="fa-solid fa-headset"></i> Contact Support</a></li>
       </ul>
 
-      <div style="display: flex; align-items: center; gap: 1rem;">
-        <button class="nav-cta-btn" onclick="openBookingModal('General Inquiry')">
-          <i class="fa-solid fa-calendar-check"></i> Book Now
-        </button>
-        <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+      <!-- Active Support Hotline Box -->
+      <div class="sidebar-hotline">
+        <div class="hotline-badge">
+          <span class="pulse-dot"></span> 24/7 Priority Desk
+        </div>
+        <a href="tel:+919494177921" class="hotline-num">+91 9494177921</a>
+        <a href="mailto:krsh2852@gmail.com" class="hotline-email">krsh2852@gmail.com</a>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Area -->
+    <main class="app-main">
+
+      <!-- Top Dashboard Status Bar -->
+      <header class="main-topbar">
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Console">
           <i class="fa-solid fa-bars"></i>
         </button>
-      </div>
-    </div>
-  </header>
 
-  <!-- Hero Section with Dynamic Visuals -->
-  <section class="hero-section" id="home">
-    <div class="hero-bg-container">
-      <div class="hero-slide active"
-        style="background-image: url('images/WhatsApp%20Image%202026-10-12%20at%2020.30.43.jpeg');"></div>
-      <div class="hero-slide"
-        style="background-image: url('images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(1).jpeg');"></div>
-      <div class="hero-slide"
-        style="background-image: url('images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(2).jpeg');"></div>
-      <div class="hero-overlay"></div>
-    </div>
-
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-badge">
-          <i class="fa-solid fa-compass"></i> Premier Travel Agency in Vizag &amp; Araku
+        <div class="topbar-status">
+          <span><i class="fa-solid fa-location-dot" style="color: var(--emerald-bright);"></i> Vizag &amp; Araku Valley, AP</span>
+          <span><i class="fa-solid fa-cloud-sun" style="color: var(--amber-star);"></i> Valley Weather: Clear &amp; Pleasant</span>
         </div>
-        <h1 class="hero-title" id="heroTitle">
-          Discover the Serene Beauty of <span>Araku Valley</span>
-        </h1>
-        <p class="hero-description" id="heroDesc">
-          Lush coffee plantations, mist-covered valleys, breathtaking waterfalls, tribal heritage, and thrilling
-          adventure trails await you in Andhra Pradesh's majestic Eastern Ghats.
-        </p>
-        <div class="hero-actions">
-          <a href="#packages" class="btn-primary">
-            <i class="fa-solid fa-suitcase-rolling"></i> Explore Packages
-          </a>
-          <button class="btn-secondary" onclick="openBookingModal('Custom Itinerary')">
-            <i class="fa-solid fa-phone-volume"></i> Plan Custom Trip
+
+        <div class="topbar-actions">
+          <button class="btn-quick-book" onclick="openBookingModal('General Inquiry')">
+            <i class="fa-solid fa-ticket"></i> Quick Booking
           </button>
         </div>
-      </div>
-    </div>
+      </header>
 
-    <!-- Slide Indicators -->
-    <div class="slider-dots">
-      <button class="slider-dot active" onclick="setSlide(0)" aria-label="Slide 1"></button>
-      <button class="slider-dot" onclick="setSlide(1)" aria-label="Slide 2"></button>
-      <button class="slider-dot" onclick="setSlide(2)" aria-label="Slide 3"></button>
-    </div>
-  </section>
+      <!-- Hero Spotlight Dashboard Slider -->
+      <section class="hero-spotlight" id="home">
+        <div class="spotlight-bg-wrap">
+          <div class="spotlight-slide active"
+            style="background-image: url('images/WhatsApp%20Image%202026-10-12%20at%2020.30.43.jpeg');"></div>
+          <div class="spotlight-slide"
+            style="background-image: url('images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(1).jpeg');"></div>
+          <div class="spotlight-slide"
+            style="background-image: url('images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(2).jpeg');"></div>
+          <div class="spotlight-gradient"></div>
+        </div>
 
-  <!-- Quick Booking Search Bar -->
-  <div class="booking-bar-wrapper">
-    <div class="container">
-      <div class="booking-bar">
-        <form class="booking-form" id="quickBookingForm" onsubmit="handleBookingSubmit(event)">
-          <div class="form-group">
+        <div class="spotlight-content">
+          <div class="spotlight-tag">
+            <i class="fa-solid fa-compass"></i> Premier Travel Agency in Vizag &amp; Araku
+          </div>
+          <h1 class="spotlight-title" id="heroTitle">
+            Discover the Serene Beauty of <span>Araku Valley</span>
+          </h1>
+          <p class="spotlight-desc" id="heroDesc">
+            Lush coffee plantations, mist-covered valleys, breathtaking waterfalls, tribal heritage, and thrilling
+            adventure trails await you in Andhra Pradesh's majestic Eastern Ghats.
+          </p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="#packages" class="btn-quick-book" style="padding: 0.85rem 1.75rem;">
+              <i class="fa-solid fa-suitcase-rolling"></i> Explore Packages
+            </a>
+            <button class="btn-pack-select" onclick="openBookingModal('Custom Itinerary')" style="padding: 0.85rem 1.75rem;">
+              <i class="fa-solid fa-phone-volume"></i> Plan Custom Trip
+            </button>
+          </div>
+        </div>
+
+        <div class="spotlight-controls">
+          <button class="spotlight-dot active" onclick="setSlide(0)" aria-label="Slide 1"></button>
+          <button class="spotlight-dot" onclick="setSlide(1)" aria-label="Slide 2"></button>
+          <button class="spotlight-dot" onclick="setSlide(2)" aria-label="Slide 3"></button>
+        </div>
+      </section>
+
+      <!-- Interactive Booking Console Card -->
+      <section class="booking-console-card" id="booking-console">
+        <div class="console-card-header">
+          <div class="console-header-title">
+            <i class="fa-solid fa-sliders"></i> Reservation Dispatch Console
+          </div>
+          <div class="console-header-badge">
+            <i class="fa-solid fa-bolt"></i> Instant Confirmation &amp; Lead Dispatch
+          </div>
+        </div>
+
+        <form class="booking-grid" id="quickBookingForm" onsubmit="handleBookingSubmit(event)">
+          <div class="field-wrapper">
             <label for="travelName"><i class="fa-solid fa-user"></i> Full Name</label>
-            <input type="text" id="travelName" class="form-control" placeholder="Enter your name" required>
+            <input type="text" id="travelName" class="dash-input" placeholder="Enter your name" required>
           </div>
-          <div class="form-group">
+          <div class="field-wrapper">
             <label for="travelMobile"><i class="fa-solid fa-phone"></i> Mobile Number</label>
-            <input type="tel" id="travelMobile" class="form-control" placeholder="+91 9876543210" required>
+            <input type="tel" id="travelMobile" class="dash-input" placeholder="+91 9876543210" required>
           </div>
-          <div class="form-group">
+          <div class="field-wrapper">
             <label for="travelDate"><i class="fa-solid fa-calendar-day"></i> Arrival Date</label>
-            <input type="date" id="travelDate" class="form-control" required>
+            <input type="date" id="travelDate" class="dash-input" required>
           </div>
-          <div class="form-group">
+          <div class="field-wrapper">
             <label for="travelType"><i class="fa-solid fa-map-location-dot"></i> Tour Category</label>
-            <select id="travelType" class="form-control">
+            <select id="travelType" class="dash-input">
               <option value="Araku 1-Day Tour">Araku 1-Day Tour</option>
               <option value="Araku 1N/2D Tour">Araku 1 Night / 2 Days</option>
               <option value="Vizag & Araku 2N/3D">Vizag &amp; Araku 2N/3D</option>
@@ -1287,443 +1255,355 @@
               <option value="Group & Corporate MICE">Group &amp; Corporate MICE</option>
             </select>
           </div>
-          <button type="submit" class="btn-book-now">
+          <button type="submit" class="btn-exec-booking">
             <i class="fa-solid fa-paper-plane"></i> Book Now
           </button>
         </form>
-      </div>
-    </div>
-  </div>
+      </section>
 
-  <!-- Tour Packages Section -->
-  <section class="packages-section" id="packages">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">Choose Your Adventure</span>
-        <h2 class="section-title">Popular <span>Tour Packages</span></h2>
-        <p style="color: var(--text-muted); margin-top: 0.8rem;">
-          From one-day escapes to comprehensive week-long circuits covering Vizag coastlines, Araku hill ranges,
-          and misty Lambasingi.
-        </p>
-      </div>
-
-      <div class="packages-grid">
-        <!-- Package 1 -->
-        <div class="package-card">
-          <div class="package-image-wrap">
-            <img src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.43.jpeg" alt="Araku 1 Day Tour">
-            <span class="package-badge">1 Day Tour</span>
-            <span class="package-rating"><i class="fa-solid fa-star"></i> 4.9</span>
+      <!-- Tour Packages Section -->
+      <section id="packages">
+        <div class="section-portal-header">
+          <div class="portal-heading">
+            <h2>Popular <span>Tour Packages</span></h2>
+            <p>From one-day escapes to comprehensive week-long circuits covering Vizag coastlines, Araku hill ranges, and misty Lambasingi.</p>
           </div>
-          <div class="package-body">
-            <div class="package-meta">
-              <span><i class="fa-regular fa-clock"></i> 1 Day</span>
-              <span><i class="fa-solid fa-car"></i> Cab Included</span>
+          <div class="portal-stats-pills">
+            <span class="stat-pill">Available Circuits: <strong>4 Curated</strong></span>
+            <span class="stat-pill">Avg Rating: <strong>4.9 / 5.0</strong></span>
+          </div>
+        </div>
+
+        <div class="dash-packages-grid">
+          <!-- Package 1 -->
+          <div class="dash-pack-card">
+            <div class="pack-thumb-box">
+              <img src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.43.jpeg" alt="Araku 1 Day Tour">
+              <span class="pack-duration-chip"><i class="fa-regular fa-clock"></i> 1 Day Tour</span>
+              <span class="pack-score-chip"><i class="fa-solid fa-star"></i> 4.9</span>
             </div>
-            <h3 class="package-title">Araku Valley 1-Day Sightseeing</h3>
-            <p class="package-desc">
-              Borra Caves, Padmapuram Botanical Gardens, Tribal Museum, Chaparai Waterfalls, and Coffee Plantations.
-            </p>
-            <div class="package-footer">
-              <div class="package-price">
-                <span class="price-label">Starting From</span>
-                <span class="price-value">₹2,499</span>
+            <div class="pack-card-content">
+              <div class="pack-features-line">
+                <span><i class="fa-solid fa-car"></i> Cab Included</span>
+                <span><i class="fa-solid fa-mountain"></i> 5 Attractions</span>
               </div>
-              <button class="btn-card-action" onclick="openBookingModal('Araku Valley 1-Day Tour')">Book Now</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Package 2 -->
-        <div class="package-card">
-          <div class="package-image-wrap">
-            <img src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(1).jpeg" alt="Araku 1N/2D Tour">
-            <span class="package-badge">1N / 2D</span>
-            <span class="package-rating"><i class="fa-solid fa-star"></i> 4.9</span>
-          </div>
-          <div class="package-body">
-            <div class="package-meta">
-              <span><i class="fa-regular fa-clock"></i> 1N / 2D</span>
-              <span><i class="fa-solid fa-hotel"></i> Resort Stay</span>
-            </div>
-            <h3 class="package-title">Araku Serenity 1 Night / 2 Days</h3>
-            <p class="package-desc">
-              Overnight luxury resort stay in Araku, tribal bonfire &amp; Dhimsa dance, coffee museum, and scenic Ghat
-              drive.
-            </p>
-            <div class="package-footer">
-              <div class="package-price">
-                <span class="price-label">Starting From</span>
-                <span class="price-value">₹4,999</span>
+              <h3 class="pack-name">Araku Valley 1-Day Sightseeing</h3>
+              <p class="pack-summary">Borra Caves, Padmapuram Botanical Gardens, Tribal Museum, Chaparai Waterfalls, and Coffee Plantations.</p>
+              <div class="pack-card-foot">
+                <div class="pack-rate-tag">
+                  <span class="rate-micro">Starting From</span>
+                  <span class="rate-amount">₹2,499</span>
+                </div>
+                <button class="btn-pack-select" onclick="openBookingModal('Araku Valley 1-Day Tour')">Book Now</button>
               </div>
-              <button class="btn-card-action" onclick="openBookingModal('Araku Serenity 1N/2D')">Book Now</button>
             </div>
           </div>
-        </div>
 
-        <!-- Package 3 -->
-        <div class="package-card">
-          <div class="package-image-wrap">
-            <img src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(2).jpeg" alt="Vizag & Araku 2N/3D">
-            <span class="package-badge">2N / 3D</span>
-            <span class="package-rating"><i class="fa-solid fa-star"></i> 5.0</span>
-          </div>
-          <div class="package-body">
-            <div class="package-meta">
-              <span><i class="fa-regular fa-clock"></i> 2N / 3D</span>
-              <span><i class="fa-solid fa-umbrella-beach"></i> Beach + Hills</span>
+          <!-- Package 2 -->
+          <div class="dash-pack-card">
+            <div class="pack-thumb-box">
+              <img src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(1).jpeg" alt="Araku 1N/2D Tour">
+              <span class="pack-duration-chip"><i class="fa-regular fa-clock"></i> 1N / 2D</span>
+              <span class="pack-score-chip"><i class="fa-solid fa-star"></i> 4.9</span>
             </div>
-            <h3 class="package-title">Vizag &amp; Araku Highlights 2N/3D</h3>
-            <p class="package-desc">
-              Rishikonda Beach, Kailasagiri Ropeway, Submarine Museum, VMRDA park, combined with complete Araku Valley.
-            </p>
-            <div class="package-footer">
-              <div class="package-price">
-                <span class="price-label">Starting From</span>
-                <span class="price-value">₹7,499</span>
+            <div class="pack-card-content">
+              <div class="pack-features-line">
+                <span><i class="fa-solid fa-hotel"></i> Resort Stay</span>
+                <span><i class="fa-solid fa-fire"></i> Tribal Bonfire</span>
               </div>
-              <button class="btn-card-action" onclick="openBookingModal('Vizag & Araku 2N/3D')">Book Now</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Package 4 -->
-        <div class="package-card">
-          <div class="package-image-wrap">
-            <img src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45.jpeg" alt="Lambasingi & Vanjangi">
-            <span class="package-badge">3N / 4D</span>
-            <span class="package-rating"><i class="fa-solid fa-star"></i> 4.8</span>
-          </div>
-          <div class="package-body">
-            <div class="package-meta">
-              <span><i class="fa-regular fa-clock"></i> 3N / 4D</span>
-              <span><i class="fa-solid fa-cloud-sun"></i> Cloud Sunrise</span>
-            </div>
-            <h3 class="package-title">Vizag, Araku &amp; Lambasingi</h3>
-            <p class="package-desc">
-              Experience the "Kashmir of Andhra" (Lambasingi), Vanjangi ocean of clouds sunrise, tent camping and apple
-              orchards.
-            </p>
-            <div class="package-footer">
-              <div class="package-price">
-                <span class="price-label">Starting From</span>
-                <span class="price-value">₹9,999</span>
+              <h3 class="pack-name">Araku Serenity 1 Night / 2 Days</h3>
+              <p class="pack-summary">Overnight luxury resort stay in Araku, tribal bonfire &amp; Dhimsa dance, coffee museum, and scenic Ghat drive.</p>
+              <div class="pack-card-foot">
+                <div class="pack-rate-tag">
+                  <span class="rate-micro">Starting From</span>
+                  <span class="rate-amount">₹4,999</span>
+                </div>
+                <button class="btn-pack-select" onclick="openBookingModal('Araku Serenity 1N/2D')">Book Now</button>
               </div>
-              <button class="btn-card-action" onclick="openBookingModal('Vizag, Araku & Lambasingi 3N/4D')">Book Now</button>
+            </div>
+          </div>
+
+          <!-- Package 3 -->
+          <div class="dash-pack-card">
+            <div class="pack-thumb-box">
+              <img src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(2).jpeg" alt="Vizag & Araku 2N/3D">
+              <span class="pack-duration-chip"><i class="fa-regular fa-clock"></i> 2N / 3D</span>
+              <span class="pack-score-chip"><i class="fa-solid fa-star"></i> 5.0</span>
+            </div>
+            <div class="pack-card-content">
+              <div class="pack-features-line">
+                <span><i class="fa-solid fa-umbrella-beach"></i> Beach + Hills</span>
+                <span><i class="fa-solid fa-cable-car"></i> Ropeway</span>
+              </div>
+              <h3 class="pack-name">Vizag &amp; Araku Highlights 2N/3D</h3>
+              <p class="pack-summary">Rishikonda Beach, Kailasagiri Ropeway, Submarine Museum, VMRDA park, combined with complete Araku Valley.</p>
+              <div class="pack-card-foot">
+                <div class="pack-rate-tag">
+                  <span class="rate-micro">Starting From</span>
+                  <span class="rate-amount">₹7,499</span>
+                </div>
+                <button class="btn-pack-select" onclick="openBookingModal('Vizag & Araku 2N/3D')">Book Now</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Package 4 -->
+          <div class="dash-pack-card">
+            <div class="pack-thumb-box">
+              <img src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45.jpeg" alt="Lambasingi & Vanjangi">
+              <span class="pack-duration-chip"><i class="fa-regular fa-clock"></i> 3N / 4D</span>
+              <span class="pack-score-chip"><i class="fa-solid fa-star"></i> 4.8</span>
+            </div>
+            <div class="pack-card-content">
+              <div class="pack-features-line">
+                <span><i class="fa-solid fa-cloud-sun"></i> Cloud Sunrise</span>
+                <span><i class="fa-solid fa-campground"></i> Tent Stay</span>
+              </div>
+              <h3 class="pack-name">Vizag, Araku &amp; Lambasingi</h3>
+              <p class="pack-summary">Experience the "Kashmir of Andhra" (Lambasingi), Vanjangi ocean of clouds sunrise, tent camping and apple orchards.</p>
+              <div class="pack-card-foot">
+                <div class="pack-rate-tag">
+                  <span class="rate-micro">Starting From</span>
+                  <span class="rate-amount">₹9,999</span>
+                </div>
+                <button class="btn-pack-select" onclick="openBookingModal('Vizag, Araku & Lambasingi 3N/4D')">Book Now</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- Special Travel Experiences -->
-  <section class="specializations-section" id="specialties">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">Your Travel, Our Expertise</span>
-        <h2 class="section-title">We Specialize in <span>Diverse Experiences</span></h2>
-      </div>
-
-      <div class="specs-grid">
-        <div class="spec-card">
-          <div class="spec-icon-box"><i class="fa-solid fa-people-roof"></i></div>
-          <h3 class="spec-title">Family Vacations</h3>
-          <div class="spec-divider"></div>
-          <p class="spec-desc">
-            Carefully curated itineraries for families of all generations. Safe comfortable cabs, sanitized resort
-            stays, child-friendly activities, and authentic regional Andhra &amp; Tribal cuisine.
-          </p>
-        </div>
-
-        <div class="spec-card">
-          <div class="spec-icon-box"><i class="fa-solid fa-briefcase"></i></div>
-          <h3 class="spec-title">Corporate &amp; MICE Tours</h3>
-          <div class="spec-divider"></div>
-          <p class="spec-desc">
-            Corporate retreats, team outbound programs, seminars, and conference venues across Vizag beach resorts
-            and Araku valley. Seamless logistics, bus charters, and team-building activities.
-          </p>
-        </div>
-
-        <div class="spec-card">
-          <div class="spec-icon-box"><i class="fa-solid fa-graduation-cap"></i></div>
-          <h3 class="spec-title">Educational Student Trips</h3>
-          <div class="spec-divider"></div>
-          <p class="spec-desc">
-            Geological explorations of billion-year-old Borra limestone caves, tribal anthropology research at Araku
-            Museums, botanical biodiversity studies, and student-friendly budget packages.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Activities & Adventure Section -->
-  <section class="activities-section" id="activities">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">Thrills &amp; Culture</span>
-        <h2 class="section-title">Exciting <span>Activities &amp; Attractions</span></h2>
-        <p style="color: var(--text-muted); margin-top: 0.8rem;">
-          Make memories that last a lifetime with unique experiences crafted across the valley.
-        </p>
-      </div>
-
-      <div class="activities-grid">
-        <div class="activity-card" onclick="openBookingModal('Hot Air Balloon')">
-          <img class="activity-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.43.jpeg" alt="Hot Air Balloon">
-          <div class="activity-overlay">
-            <span class="activity-tag">Aero Adventure</span>
-            <h3 class="activity-title">Hot Air Balloon</h3>
+      <!-- Special Travel Experiences -->
+      <section id="specialties">
+        <div class="section-portal-header">
+          <div class="portal-heading">
+            <h2>We Specialize in <span>Diverse Experiences</span></h2>
+            <p>Tailored vacation modules designed to match every travel profile and group expectation.</p>
           </div>
         </div>
 
-        <div class="activity-card" onclick="openBookingModal('Rope Cycling')">
-          <img class="activity-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(1).jpeg" alt="Rope Cycling">
-          <div class="activity-overlay">
-            <span class="activity-tag">High Altitude Thrill</span>
-            <h3 class="activity-title">Rope Cycling &amp; Zipline</h3>
+        <div class="specialty-dash-grid">
+          <div class="specialty-tile">
+            <div class="specialty-avatar-icon"><i class="fa-solid fa-people-roof"></i></div>
+            <h3 class="specialty-title">Family Vacations</h3>
+            <p class="specialty-desc">
+              Carefully curated itineraries for families of all generations. Safe comfortable cabs, sanitized resort
+              stays, child-friendly activities, and authentic regional Andhra &amp; Tribal cuisine.
+            </p>
+          </div>
+
+          <div class="specialty-tile">
+            <div class="specialty-avatar-icon"><i class="fa-solid fa-briefcase"></i></div>
+            <h3 class="specialty-title">Corporate &amp; MICE Tours</h3>
+            <p class="specialty-desc">
+              Corporate retreats, team outbound programs, seminars, and conference venues across Vizag beach resorts
+              and Araku valley. Seamless logistics, bus charters, and team-building activities.
+            </p>
+          </div>
+
+          <div class="specialty-tile">
+            <div class="specialty-avatar-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <h3 class="specialty-title">Educational Student Trips</h3>
+            <p class="specialty-desc">
+              Geological explorations of billion-year-old Borra limestone caves, tribal anthropology research at Araku
+              Museums, botanical biodiversity studies, and student-friendly budget packages.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Activities & Adventure Section -->
+      <section id="activities">
+        <div class="section-portal-header">
+          <div class="portal-heading">
+            <h2>Exciting <span>Activities &amp; Attractions</span></h2>
+            <p>Make memories that last a lifetime with unique experiences crafted across the valley.</p>
           </div>
         </div>
 
-        <div class="activity-card" onclick="openBookingModal('Tent Camping & Bonfire')">
-          <img class="activity-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(2).jpeg" alt="Campfire Stay">
-          <div class="activity-overlay">
-            <span class="activity-tag">Stargazing &amp; Night Life</span>
-            <h3 class="activity-title">Tent Camping &amp; Bonfire</h3>
+        <div class="dash-activity-grid">
+          <div class="activity-deck-card" onclick="openBookingModal('Hot Air Balloon')">
+            <img class="act-bg-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.43.jpeg" alt="Hot Air Balloon">
+            <div class="act-gradient-overlay">
+              <span class="act-category-code">Aero Adventure</span>
+              <h3 class="act-label">Hot Air Balloon</h3>
+            </div>
           </div>
-        </div>
 
-        <div class="activity-card" onclick="openBookingModal('Trekking & Waterfalls')">
-          <img class="activity-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45.jpeg" alt="Trekking">
-          <div class="activity-overlay">
-            <span class="activity-tag">Nature Trails</span>
-            <h3 class="activity-title">Trekking &amp; Waterfalls</h3>
+          <div class="activity-deck-card" onclick="openBookingModal('Rope Cycling')">
+            <img class="act-bg-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(1).jpeg" alt="Rope Cycling">
+            <div class="act-gradient-overlay">
+              <span class="act-category-code">High Altitude Thrill</span>
+              <h3 class="act-label">Rope Cycling &amp; Zipline</h3>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Why Choose Us -->
-  <section class="why-us-section" id="about">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">Why Araku Trails</span>
-        <h2 class="section-title">Why Travel <span>With Us?</span></h2>
-      </div>
+          <div class="activity-deck-card" onclick="openBookingModal('Tent Camping & Bonfire')">
+            <img class="act-bg-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(2).jpeg" alt="Campfire Stay">
+            <div class="act-gradient-overlay">
+              <span class="act-category-code">Stargazing &amp; Night Life</span>
+              <h3 class="act-label">Tent Camping &amp; Bonfire</h3>
+            </div>
+          </div>
 
-      <div class="features-grid">
-        <div class="feature-item">
-          <div class="feature-icon"><i class="fa-solid fa-map-location-dot"></i></div>
-          <h3 class="feature-title">Tailor-Made Itineraries</h3>
-          <p class="feature-desc">Every trip is customized to your preferred pace, group size, and interests.</p>
-        </div>
-
-        <div class="feature-item">
-          <div class="feature-icon"><i class="fa-solid fa-user-shield"></i></div>
-          <h3 class="feature-title">Verified Local Drivers &amp; Guides</h3>
-          <p class="feature-desc">Experienced hill drivers knowledgeable with every ghat hairpin bend and scenic spot.</p>
-        </div>
-
-        <div class="feature-item">
-          <div class="feature-icon"><i class="fa-solid fa-seedling"></i></div>
-          <h3 class="feature-title">Eco-Friendly Tourism</h3>
-          <p class="feature-desc">We respect the tribal culture and natural valleys, supporting local indigenous communities.</p>
-        </div>
-
-        <div class="feature-item">
-          <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
-          <h3 class="feature-title">24/7 On-Trip Assistance</h3>
-          <p class="feature-desc">Always a call away from pickup at Vizag railway station / airport till final drop-off.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Traveller Testimonials -->
-  <section class="testimonials-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-subtitle">Reviews &amp; Stories</span>
-        <h2 class="section-title">What Our <span>Travellers Say</span></h2>
-      </div>
-
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
-          <p class="testimonial-text">
-            "Araku Trails planned our family trip with perfection! Borra caves, the picturesque coffee estates, and
-            the resort stay in the valley were mesmerizing. Very polite driver and great food recommendations!"
-          </p>
-          <div class="reviewer-info">
-            <img class="reviewer-avatar" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.43.jpeg" alt="Merlyn">
-            <div>
-              <h4 class="reviewer-name">Merlyn &amp; Family</h4>
-              <span class="reviewer-role">Family Vacation, Hyderabad</span>
+          <div class="activity-deck-card" onclick="openBookingModal('Trekking & Waterfalls')">
+            <img class="act-bg-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45.jpeg" alt="Trekking">
+            <div class="act-gradient-overlay">
+              <span class="act-category-code">Nature Trails</span>
+              <h3 class="act-label">Trekking &amp; Waterfalls</h3>
             </div>
           </div>
         </div>
+      </section>
 
-        <div class="testimonial-card">
-          <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
-          <p class="testimonial-text">
-            "The Vanjangi cloud sunrise at 5:30 AM was breathtaking! They arranged the 4x4 jeep safari smoothly.
-            Everything was on schedule without any stress. Highly recommended for couples and adventurers."
-          </p>
-          <div class="reviewer-info">
-            <img class="reviewer-avatar" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(1).jpeg" alt="Emmanuel">
-            <div>
-              <h4 class="reviewer-name">Emmanuel &amp; Priya</h4>
-              <span class="reviewer-role">Couple Tour, Bangalore</span>
-            </div>
+      <!-- Why Choose Us -->
+      <section id="about">
+        <div class="section-portal-header">
+          <div class="portal-heading">
+            <h2>Why Travel <span>With Us?</span></h2>
+            <p>Our commitment to local expertise, safety, and seamless hill logistics.</p>
           </div>
         </div>
 
-        <div class="testimonial-card">
-          <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
-          <p class="testimonial-text">
-            "Organized our corporate team outing of 35 people from Vizag to Araku. Clean deluxe buses, wonderful tribal
-            dance arrangements, and campfire night. Everyone loved every moment!"
-          </p>
-          <div class="reviewer-info">
-            <img class="reviewer-avatar" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(2).jpeg" alt="Yuvi">
-            <div>
-              <h4 class="reviewer-name">Yuvi Kumar</h4>
-              <span class="reviewer-role">Corporate Lead, Chennai</span>
+        <div class="features-dash-row">
+          <div class="feature-metric-card">
+            <div class="metric-icon-wrap"><i class="fa-solid fa-map-location-dot"></i></div>
+            <h4 class="metric-label">Tailor-Made Itineraries</h4>
+            <p class="metric-explain">Every trip is customized to your preferred pace, group size, and interests.</p>
+          </div>
+
+          <div class="feature-metric-card">
+            <div class="metric-icon-wrap"><i class="fa-solid fa-user-shield"></i></div>
+            <h4 class="metric-label">Verified Local Drivers &amp; Guides</h4>
+            <p class="metric-explain">Experienced hill drivers knowledgeable with every ghat hairpin bend and scenic spot.</p>
+          </div>
+
+          <div class="feature-metric-card">
+            <div class="metric-icon-wrap"><i class="fa-solid fa-seedling"></i></div>
+            <h4 class="metric-label">Eco-Friendly Tourism</h4>
+            <p class="metric-explain">We respect the tribal culture and natural valleys, supporting local indigenous communities.</p>
+          </div>
+
+          <div class="feature-metric-card">
+            <div class="metric-icon-wrap"><i class="fa-solid fa-headset"></i></div>
+            <h4 class="metric-label">24/7 On-Trip Assistance</h4>
+            <p class="metric-explain">Always a call away from pickup at Vizag railway station / airport till final drop-off.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Traveller Reviews -->
+      <section>
+        <div class="section-portal-header">
+          <div class="portal-heading">
+            <h2>What Our <span>Travellers Say</span></h2>
+            <p>Real experiences and verified reviews from guests who explored Araku with us.</p>
+          </div>
+        </div>
+
+        <div class="testimonial-dash-grid">
+          <div class="review-log-card">
+            <div class="quote-badge-icon"><i class="fa-solid fa-quote-left"></i></div>
+            <p class="review-statement">
+              "Araku Trails planned our family trip with perfection! Borra caves, the picturesque coffee estates, and
+              the resort stay in the valley were mesmerizing. Very polite driver and great food recommendations!"
+            </p>
+            <div class="client-data-box">
+              <img class="client-avatar-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.43.jpeg" alt="Merlyn">
+              <div>
+                <h5 class="client-name-tag">Merlyn &amp; Family</h5>
+                <span class="client-loc-tag">Family Vacation, Hyderabad</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-log-card">
+            <div class="quote-badge-icon"><i class="fa-solid fa-quote-left"></i></div>
+            <p class="review-statement">
+              "The Vanjangi cloud sunrise at 5:30 AM was breathtaking! They arranged the 4x4 jeep safari smoothly.
+              Everything was on schedule without any stress. Highly recommended for couples and adventurers."
+            </p>
+            <div class="client-data-box">
+              <img class="client-avatar-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(1).jpeg" alt="Emmanuel">
+              <div>
+                <h5 class="client-name-tag">Emmanuel &amp; Priya</h5>
+                <span class="client-loc-tag">Couple Tour, Bangalore</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-log-card">
+            <div class="quote-badge-icon"><i class="fa-solid fa-quote-left"></i></div>
+            <p class="review-statement">
+              "Organized our corporate team outing of 35 people from Vizag to Araku. Clean deluxe buses, wonderful tribal
+              dance arrangements, and campfire night. Everyone loved every moment!"
+            </p>
+            <div class="client-data-box">
+              <img class="client-avatar-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(2).jpeg" alt="Yuvi">
+              <div>
+                <h5 class="client-name-tag">Yuvi Kumar</h5>
+                <span class="client-loc-tag">Corporate Lead, Chennai</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- CTA Banner -->
-  <section class="cta-banner" id="contact">
-    <div class="container cta-content">
-      <h2 class="cta-title">Ready to Experience the Magic of Araku?</h2>
-      <p class="cta-desc">
-        Connect with our local destination specialists to get a customized itinerary and the best seasonal discount.
-      </p>
-      <div class="cta-buttons">
-        <a href="tel:+919494177921" class="btn-primary">
-          <i class="fa-solid fa-phone"></i> Call +91 9494177921
-        </a>
-        <a href="https://wa.me/919494177921?text=Hello%20Araku%20Trails,%20I%20want%20to%20plan%20a%20trip"
-          target="_blank" class="btn-secondary">
-          <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col footer-about">
-          <a href="#" class="brand-logo" style="margin-bottom: 1.25rem;">
-            <div class="logo-icon"><i class="fa-solid fa-mountain-sun"></i></div>
-            <span>Araku <span>Trails</span></span>
+      <!-- CTA Callout Banner -->
+      <section class="dash-callout-panel" id="contact">
+        <div class="callout-text">
+          <h2>Ready to Experience the Magic of Araku?</h2>
+          <p>Connect with our local destination specialists to get a customized itinerary and the best seasonal discount.</p>
+        </div>
+        <div class="callout-btn-group">
+          <a href="tel:+919494177921" class="btn-callout-call">
+            <i class="fa-solid fa-phone"></i> Call +91 9494177921
           </a>
-          <p>
-            Your trusted local travel partner for Araku Valley, Visakhapatnam, Vanjangi, and Lambasingi. Delivering
-            unforgettable journeys, luxury stays, and authentic eco-tourism across Andhra Pradesh.
-          </p>
-          <div class="footer-social-icons">
-            <a href="#" class="social-btn" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" class="social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" class="social-btn" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-            <a href="#" class="social-btn" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-          </div>
+          <a href="https://wa.me/919494177921?text=Hello%20Araku%20Trails,%20I%20want%20to%20plan%20a%20trip"
+            target="_blank" class="btn-callout-chat">
+            <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+          </a>
         </div>
+      </section>
 
-        <div class="footer-col">
-          <h4>Quick Links</h4>
-          <ul class="footer-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#packages">Tour Packages</a></li>
-            <li><a href="#activities">Activities</a></li>
-            <li><a href="#specialties">Special Tours</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Top Packages</h4>
-          <ul class="footer-links">
-            <li><a href="#packages">Araku 1-Day Tour</a></li>
-            <li><a href="#packages">Araku 1N / 2D Stay</a></li>
-            <li><a href="#packages">Vizag &amp; Araku 2N/3D</a></li>
-            <li><a href="#packages">Lambasingi &amp; Vanjangi</a></li>
-            <li><a href="#packages">Araku Honeymoon Specials</a></li>
-            <li><a href="#packages">Corporate MICE Charters</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Get In Touch</h4>
-          <div class="footer-contact-item">
-            <i class="fa-solid fa-phone"></i>
-            <div>
-              <strong>Helpline:</strong><br>
-              <a href="tel:+919494177921">+91 9494177921</a>
-            </div>
-          </div>
-          <div class="footer-contact-item">
-            <i class="fa-solid fa-envelope"></i>
-            <div>
-              <strong>Email:</strong><br>
-              <a href="mailto:krsh2852@gmail.com">krsh2852@gmail.com</a>
-            </div>
-          </div>
-          <div class="footer-contact-item">
-            <i class="fa-solid fa-location-dot"></i>
-            <div>
-              <strong>Office:</strong><br>
-              Kurmannapalem, Visakhapatnam, Andhra Pradesh - 530046
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
+      <!-- Footer Info -->
+      <footer class="dash-footer-meta">
         <div>
-          &copy; <span id="currentYear"></span> <strong>arakutrails.com</strong>. All rights reserved.
+          &copy; <span id="currentYear"></span> <strong>arakutrails.com</strong> &bull; Office: Kurmannapalem, Visakhapatnam, Andhra Pradesh - 530046
         </div>
-        <div style="color: var(--text-muted);">
-          Crafted with care for explorers of Araku Valley &amp; Eastern Ghats.
+        <div class="footer-quick-contacts">
+          <a href="tel:+919494177921"><i class="fa-solid fa-phone"></i> +91 9494177921</a>
+          <a href="mailto:krsh2852@gmail.com"><i class="fa-solid fa-envelope"></i> krsh2852@gmail.com</a>
         </div>
-      </div>
-    </div>
-  </footer>
+      </footer>
+
+    </main>
+  </div>
 
   <!-- Quick Booking Modal Popup -->
   <div class="modal" id="bookingModal">
     <div class="modal-box">
       <button class="modal-close" onclick="closeBookingModal()">&times;</button>
-      <h3 style="font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem;" id="modalPackageTitle">Book Your Tour</h3>
-      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+      <h3 style="font-family: var(--font-brand); font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem;" id="modalPackageTitle">Book Your Tour</h3>
+      <p style="color: var(--text-body); font-size: 0.9rem; margin-bottom: 1.5rem;">
         Fill in your details and our travel representative will call you with custom quotes within 15 minutes.
       </p>
 
       <form onsubmit="handleModalSubmit(event)" style="display: flex; flex-direction: column; gap: 1rem;">
         <input type="hidden" id="modalSelectedPackage" value="">
-        <div class="form-group">
+        <div class="field-wrapper">
           <label for="modalName"><i class="fa-solid fa-user"></i> Full Name</label>
-          <input type="text" id="modalName" class="form-control" placeholder="Your Name" required>
+          <input type="text" id="modalName" class="dash-input" placeholder="Your Name" required>
         </div>
-        <div class="form-group">
+        <div class="field-wrapper">
           <label for="modalPhone"><i class="fa-solid fa-phone"></i> Phone / WhatsApp</label>
-          <input type="tel" id="modalPhone" class="form-control" placeholder="Mobile Number" required>
+          <input type="tel" id="modalPhone" class="dash-input" placeholder="Mobile Number" required>
         </div>
-        <div class="form-group">
+        <div class="field-wrapper">
           <label for="modalDate"><i class="fa-solid fa-calendar"></i> Travel Date</label>
-          <input type="date" id="modalDate" class="form-control" required>
+          <input type="date" id="modalDate" class="dash-input" required>
         </div>
-        <button type="submit" class="btn-book-now" style="margin-top: 0.5rem;">
+        <button type="submit" class="btn-exec-booking" style="margin-top: 0.5rem;">
           <i class="fa-solid fa-check-circle"></i> Confirm Booking Request
         </button>
       </form>
@@ -1740,23 +1620,29 @@
     document.getElementById('travelDate').min = today;
     document.getElementById('modalDate').min = today;
 
-    // Mobile Hamburger Toggle
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const navMenu = document.getElementById('navMenu');
+    // Mobile Sidebar Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const appSidebar = document.getElementById('appSidebar');
 
-    hamburgerBtn.addEventListener('click', () => {
-      navMenu.classList.toggle('open');
-    });
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', () => {
+        appSidebar.classList.toggle('open');
+      });
+    }
 
-    document.querySelectorAll('.nav-link').forEach(link => {
+    document.querySelectorAll('.console-nav-item a').forEach(link => {
       link.addEventListener('click', () => {
-        navMenu.classList.remove('open');
+        document.querySelectorAll('.console-nav-item').forEach(item => item.classList.remove('active'));
+        link.parentElement.classList.add('active');
+        if (window.innerWidth <= 1024) {
+          appSidebar.classList.remove('open');
+        }
       });
     });
 
-    // Hero Carousel Logic
-    const slides = document.querySelectorAll('.hero-slide');
-    const dots = document.querySelectorAll('.slider-dot');
+    // Spotlight Carousel Logic
+    const slides = document.querySelectorAll('.spotlight-slide');
+    const dots = document.querySelectorAll('.spotlight-dot');
     let currentSlide = 0;
     const slideHeadlines = [
       "Discover the Serene Beauty of <span>Araku Valley</span>",
