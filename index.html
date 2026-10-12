@@ -25,25 +25,25 @@
       --panel-hover: #15251f;
       --panel-border: rgba(255, 255, 255, 0.08);
       --border-accent: rgba(16, 185, 129, 0.35);
-      
+
       --emerald-glow: #10b981;
       --emerald-bright: #34d399;
       --amber-star: #f59e0b;
       --sky-azure: #0ea5e9;
-      
+
       --text-heading: #f8fafc;
       --text-body: #94a3b8;
       --text-bright: #e2e8f0;
-      
+
       --font-brand: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif;
       --font-body: 'Plus Jakarta Sans', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
-      
+
       --radius-sm: 8px;
       --radius-md: 14px;
       --radius-lg: 20px;
       --radius-pill: 9999px;
-      
+
       --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
@@ -195,9 +195,17 @@
     }
 
     @keyframes pulse {
-      0% { opacity: 0.4; }
-      50% { opacity: 1; }
-      100% { opacity: 0.4; }
+      0% {
+        opacity: 0.4;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0.4;
+      }
     }
 
     .hotline-num {
@@ -1100,13 +1108,16 @@
       .app-sidebar {
         transform: translateX(-100%);
       }
+
       .app-sidebar.open {
         transform: translateX(0);
       }
+
       .app-main {
         margin-left: 0;
         padding: 1.5rem 1rem;
       }
+
       .mobile-menu-btn {
         display: block;
       }
@@ -1116,10 +1127,12 @@
       .booking-grid {
         grid-template-columns: 1fr;
       }
+
       .hero-spotlight {
         padding: 2rem 1.5rem;
         min-height: 380px;
       }
+
       .dash-callout-panel {
         padding: 2rem 1.5rem;
       }
@@ -1141,11 +1154,13 @@
       <div class="console-nav-title">Navigation Console</div>
       <ul class="console-nav-list">
         <li class="console-nav-item active"><a href="#home"><i class="fa-solid fa-compass"></i> Home Spotlight</a></li>
-        <li class="console-nav-item"><a href="#booking-console"><i class="fa-solid fa-calendar-check"></i> Booking Console</a></li>
+        <li class="console-nav-item"><a href="#booking-console"><i class="fa-solid fa-calendar-check"></i> Booking
+            Console</a></li>
         <li class="console-nav-item"><a href="#packages"><i class="fa-solid fa-layer-group"></i> Tour Packages</a></li>
         <li class="console-nav-item"><a href="#specialties"><i class="fa-solid fa-crown"></i> Special Tours</a></li>
         <li class="console-nav-item"><a href="#activities"><i class="fa-solid fa-parachute-box"></i> Activities</a></li>
-        <li class="console-nav-item"><a href="#about"><i class="fa-solid fa-shield-halved"></i> Why Araku Trails</a></li>
+        <li class="console-nav-item"><a href="#about"><i class="fa-solid fa-shield-halved"></i> Why Araku Trails</a>
+        </li>
         <li class="console-nav-item"><a href="#contact"><i class="fa-solid fa-headset"></i> Contact Support</a></li>
       </ul>
 
@@ -1169,8 +1184,10 @@
         </button>
 
         <div class="topbar-status">
-          <span><i class="fa-solid fa-location-dot" style="color: var(--emerald-bright);"></i> Vizag &amp; Araku Valley, AP</span>
-          <span><i class="fa-solid fa-cloud-sun" style="color: var(--amber-star);"></i> Valley Weather: Clear &amp; Pleasant</span>
+          <span><i class="fa-solid fa-location-dot" style="color: var(--emerald-bright);"></i> Vizag &amp; Araku Valley,
+            AP</span>
+          <span><i class="fa-solid fa-cloud-sun" style="color: var(--amber-star);"></i> Valley Weather: Clear &amp;
+            Pleasant</span>
         </div>
 
         <div class="topbar-actions">
@@ -1184,11 +1201,11 @@
       <section class="hero-spotlight" id="home">
         <div class="spotlight-bg-wrap">
           <div class="spotlight-slide active"
-            style="background-image: url('images/WhatsApp%20Image%202026-10-12%20at%2020.30.43.jpeg');"></div>
+            style="background-image: url('images/WhatsApp%20Image%202026-10-13%20at%2012.46.39%20AM.jpeg'); background-position: center 25%;"></div>
+          <div class="spotlight-slide"
+            style="background-image: url('images/WhatsApp%20Image%202026-10-13%20at%2012.46.40%20AM.jpeg'); background-position: center center;"></div>
           <div class="spotlight-slide"
             style="background-image: url('images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(1).jpeg');"></div>
-          <div class="spotlight-slide"
-            style="background-image: url('images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(2).jpeg');"></div>
           <div class="spotlight-gradient"></div>
         </div>
 
@@ -1207,7 +1224,8 @@
             <a href="#packages" class="btn-quick-book" style="padding: 0.85rem 1.75rem;">
               <i class="fa-solid fa-suitcase-rolling"></i> Explore Packages
             </a>
-            <button class="btn-pack-select" onclick="openBookingModal('Custom Itinerary')" style="padding: 0.85rem 1.75rem;">
+            <button class="btn-pack-select" onclick="openBookingModal('Custom Itinerary')"
+              style="padding: 0.85rem 1.75rem;">
               <i class="fa-solid fa-phone-volume"></i> Plan Custom Trip
             </button>
           </div>
@@ -1266,7 +1284,8 @@
         <div class="section-portal-header">
           <div class="portal-heading">
             <h2>Popular <span>Tour Packages</span></h2>
-            <p>From one-day escapes to comprehensive week-long circuits covering Vizag coastlines, Araku hill ranges, and misty Lambasingi.</p>
+            <p>From one-day escapes to comprehensive week-long circuits covering Vizag coastlines, Araku hill ranges,
+              and misty Lambasingi.</p>
           </div>
           <div class="portal-stats-pills">
             <span class="stat-pill">Available Circuits: <strong>4 Curated</strong></span>
@@ -1278,7 +1297,7 @@
           <!-- Package 1 -->
           <div class="dash-pack-card">
             <div class="pack-thumb-box">
-              <img src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.43.jpeg" alt="Araku 1 Day Tour">
+              <img src="images/WhatsApp%20Image%202026-10-13%20at%2012.46.40%20AM.jpeg" alt="Araku 1 Day Tour">
               <span class="pack-duration-chip"><i class="fa-regular fa-clock"></i> 1 Day Tour</span>
               <span class="pack-score-chip"><i class="fa-solid fa-star"></i> 4.9</span>
             </div>
@@ -1288,7 +1307,8 @@
                 <span><i class="fa-solid fa-mountain"></i> 5 Attractions</span>
               </div>
               <h3 class="pack-name">Araku Valley 1-Day Sightseeing</h3>
-              <p class="pack-summary">Borra Caves, Padmapuram Botanical Gardens, Tribal Museum, Chaparai Waterfalls, and Coffee Plantations.</p>
+              <p class="pack-summary">Borra Caves, Padmapuram Botanical Gardens, Tribal Museum, Chaparai Waterfalls, and
+                Coffee Plantations.</p>
               <div class="pack-card-foot">
                 <div class="pack-rate-tag">
                   <span class="rate-micro">Starting From</span>
@@ -1312,7 +1332,8 @@
                 <span><i class="fa-solid fa-fire"></i> Tribal Bonfire</span>
               </div>
               <h3 class="pack-name">Araku Serenity 1 Night / 2 Days</h3>
-              <p class="pack-summary">Overnight luxury resort stay in Araku, tribal bonfire &amp; Dhimsa dance, coffee museum, and scenic Ghat drive.</p>
+              <p class="pack-summary">Overnight luxury resort stay in Araku, tribal bonfire &amp; Dhimsa dance, coffee
+                museum, and scenic Ghat drive.</p>
               <div class="pack-card-foot">
                 <div class="pack-rate-tag">
                   <span class="rate-micro">Starting From</span>
@@ -1336,7 +1357,8 @@
                 <span><i class="fa-solid fa-cable-car"></i> Ropeway</span>
               </div>
               <h3 class="pack-name">Vizag &amp; Araku Highlights 2N/3D</h3>
-              <p class="pack-summary">Rishikonda Beach, Kailasagiri Ropeway, Submarine Museum, VMRDA park, combined with complete Araku Valley.</p>
+              <p class="pack-summary">Rishikonda Beach, Kailasagiri Ropeway, Submarine Museum, VMRDA park, combined with
+                complete Araku Valley.</p>
               <div class="pack-card-foot">
                 <div class="pack-rate-tag">
                   <span class="rate-micro">Starting From</span>
@@ -1360,13 +1382,15 @@
                 <span><i class="fa-solid fa-campground"></i> Tent Stay</span>
               </div>
               <h3 class="pack-name">Vizag, Araku &amp; Lambasingi</h3>
-              <p class="pack-summary">Experience the "Kashmir of Andhra" (Lambasingi), Vanjangi ocean of clouds sunrise, tent camping and apple orchards.</p>
+              <p class="pack-summary">Experience the "Kashmir of Andhra" (Lambasingi), Vanjangi ocean of clouds sunrise,
+                tent camping and apple orchards.</p>
               <div class="pack-card-foot">
                 <div class="pack-rate-tag">
                   <span class="rate-micro">Starting From</span>
                   <span class="rate-amount">₹9,999</span>
                 </div>
-                <button class="btn-pack-select" onclick="openBookingModal('Vizag, Araku & Lambasingi 3N/4D')">Book Now</button>
+                <button class="btn-pack-select" onclick="openBookingModal('Vizag, Araku & Lambasingi 3N/4D')">Book
+                  Now</button>
               </div>
             </div>
           </div>
@@ -1423,7 +1447,8 @@
 
         <div class="dash-activity-grid">
           <div class="activity-deck-card" onclick="openBookingModal('Hot Air Balloon')">
-            <img class="act-bg-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.43.jpeg" alt="Hot Air Balloon">
+            <img class="act-bg-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.43.jpeg"
+              alt="Hot Air Balloon">
             <div class="act-gradient-overlay">
               <span class="act-category-code">Aero Adventure</span>
               <h3 class="act-label">Hot Air Balloon</h3>
@@ -1431,7 +1456,8 @@
           </div>
 
           <div class="activity-deck-card" onclick="openBookingModal('Rope Cycling')">
-            <img class="act-bg-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(1).jpeg" alt="Rope Cycling">
+            <img class="act-bg-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(1).jpeg"
+              alt="Rope Cycling">
             <div class="act-gradient-overlay">
               <span class="act-category-code">High Altitude Thrill</span>
               <h3 class="act-label">Rope Cycling &amp; Zipline</h3>
@@ -1439,7 +1465,8 @@
           </div>
 
           <div class="activity-deck-card" onclick="openBookingModal('Tent Camping & Bonfire')">
-            <img class="act-bg-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(2).jpeg" alt="Campfire Stay">
+            <img class="act-bg-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(2).jpeg"
+              alt="Campfire Stay">
             <div class="act-gradient-overlay">
               <span class="act-category-code">Stargazing &amp; Night Life</span>
               <h3 class="act-label">Tent Camping &amp; Bonfire</h3>
@@ -1447,7 +1474,7 @@
           </div>
 
           <div class="activity-deck-card" onclick="openBookingModal('Trekking & Waterfalls')">
-            <img class="act-bg-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45.jpeg" alt="Trekking">
+            <img class="act-bg-img" src="images/WhatsApp%20Image%202026-10-13%20at%2012.46.39%20AM%20(1).jpeg" alt="Trekking">
             <div class="act-gradient-overlay">
               <span class="act-category-code">Nature Trails</span>
               <h3 class="act-label">Trekking &amp; Waterfalls</h3>
@@ -1475,19 +1502,22 @@
           <div class="feature-metric-card">
             <div class="metric-icon-wrap"><i class="fa-solid fa-user-shield"></i></div>
             <h4 class="metric-label">Verified Local Drivers &amp; Guides</h4>
-            <p class="metric-explain">Experienced hill drivers knowledgeable with every ghat hairpin bend and scenic spot.</p>
+            <p class="metric-explain">Experienced hill drivers knowledgeable with every ghat hairpin bend and scenic
+              spot.</p>
           </div>
 
           <div class="feature-metric-card">
             <div class="metric-icon-wrap"><i class="fa-solid fa-seedling"></i></div>
             <h4 class="metric-label">Eco-Friendly Tourism</h4>
-            <p class="metric-explain">We respect the tribal culture and natural valleys, supporting local indigenous communities.</p>
+            <p class="metric-explain">We respect the tribal culture and natural valleys, supporting local indigenous
+              communities.</p>
           </div>
 
           <div class="feature-metric-card">
             <div class="metric-icon-wrap"><i class="fa-solid fa-headset"></i></div>
             <h4 class="metric-label">24/7 On-Trip Assistance</h4>
-            <p class="metric-explain">Always a call away from pickup at Vizag railway station / airport till final drop-off.</p>
+            <p class="metric-explain">Always a call away from pickup at Vizag railway station / airport till final
+              drop-off.</p>
           </div>
         </div>
       </section>
@@ -1509,7 +1539,8 @@
               the resort stay in the valley were mesmerizing. Very polite driver and great food recommendations!"
             </p>
             <div class="client-data-box">
-              <img class="client-avatar-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.43.jpeg" alt="Merlyn">
+              <img class="client-avatar-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.43.jpeg"
+                alt="Merlyn">
               <div>
                 <h5 class="client-name-tag">Merlyn &amp; Family</h5>
                 <span class="client-loc-tag">Family Vacation, Hyderabad</span>
@@ -1524,7 +1555,8 @@
               Everything was on schedule without any stress. Highly recommended for couples and adventurers."
             </p>
             <div class="client-data-box">
-              <img class="client-avatar-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(1).jpeg" alt="Emmanuel">
+              <img class="client-avatar-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(1).jpeg"
+                alt="Emmanuel">
               <div>
                 <h5 class="client-name-tag">Emmanuel &amp; Priya</h5>
                 <span class="client-loc-tag">Couple Tour, Bangalore</span>
@@ -1535,11 +1567,13 @@
           <div class="review-log-card">
             <div class="quote-badge-icon"><i class="fa-solid fa-quote-left"></i></div>
             <p class="review-statement">
-              "Organized our corporate team outing of 35 people from Vizag to Araku. Clean deluxe buses, wonderful tribal
+              "Organized our corporate team outing of 35 people from Vizag to Araku. Clean deluxe buses, wonderful
+              tribal
               dance arrangements, and campfire night. Everyone loved every moment!"
             </p>
             <div class="client-data-box">
-              <img class="client-avatar-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(2).jpeg" alt="Yuvi">
+              <img class="client-avatar-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(2).jpeg"
+                alt="Yuvi">
               <div>
                 <h5 class="client-name-tag">Yuvi Kumar</h5>
                 <span class="client-loc-tag">Corporate Lead, Chennai</span>
@@ -1553,7 +1587,8 @@
       <section class="dash-callout-panel" id="contact">
         <div class="callout-text">
           <h2>Ready to Experience the Magic of Araku?</h2>
-          <p>Connect with our local destination specialists to get a customized itinerary and the best seasonal discount.</p>
+          <p>Connect with our local destination specialists to get a customized itinerary and the best seasonal
+            discount.</p>
         </div>
         <div class="callout-btn-group">
           <a href="tel:+919494177921" class="btn-callout-call">
@@ -1569,7 +1604,8 @@
       <!-- Footer Info -->
       <footer class="dash-footer-meta">
         <div>
-          &copy; <span id="currentYear"></span> <strong>arakutrails.com</strong> &bull; Office: Kurmannapalem, Visakhapatnam, Andhra Pradesh - 530046
+          &copy; <span id="currentYear"></span> <strong>arakutrails.com</strong> &bull; Office: Kurmannapalem,
+          Visakhapatnam, Andhra Pradesh - 530046
         </div>
         <div class="footer-quick-contacts">
           <a href="tel:+919494177921"><i class="fa-solid fa-phone"></i> +91 9494177921</a>
@@ -1584,7 +1620,8 @@
   <div class="modal" id="bookingModal">
     <div class="modal-box">
       <button class="modal-close" onclick="closeBookingModal()">&times;</button>
-      <h3 style="font-family: var(--font-brand); font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem;" id="modalPackageTitle">Book Your Tour</h3>
+      <h3 style="font-family: var(--font-brand); font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem;"
+        id="modalPackageTitle">Book Your Tour</h3>
       <p style="color: var(--text-body); font-size: 0.9rem; margin-bottom: 1.5rem;">
         Fill in your details and our travel representative will call you with custom quotes within 15 minutes.
       </p>
