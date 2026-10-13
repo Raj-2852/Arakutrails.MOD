@@ -239,70 +239,71 @@
       min-width: 0;
     }
 
-    /* Top Action Header */
-    .main-topbar {
+    /* Sidebar Location & Weather Status Box */
+    .sidebar-status-box {
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius-md);
+      padding: 0.85rem 1rem;
+      margin-bottom: 1.5rem;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      font-family: var(--font-mono);
+      color: var(--text-body);
+    }
+
+    .sidebar-status-item {
+      display: flex;
       align-items: center;
+      gap: 0.55rem;
+    }
+
+    .sidebar-status-item i {
+      font-size: 0.9rem;
+    }
+
+    .sidebar-status-item strong {
+      color: var(--text-bright);
+      font-weight: 600;
+    }
+
+    /* Mobile Header Bar */
+    .mobile-header-bar {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
       background: var(--sidebar-bg);
       border: 1px solid var(--panel-border);
       border-radius: var(--radius-md);
-      padding: 0.9rem 1.5rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-      gap: 1rem;
+      padding: 0.75rem 1.25rem;
+      margin-bottom: 1.5rem;
     }
 
-    .topbar-status {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      font-size: 0.85rem;
-      color: var(--text-body);
-      font-family: var(--font-mono);
-    }
-
-    .topbar-status span {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .topbar-actions {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .btn-quick-book {
-      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-      color: #fff;
-      border: none;
-      border-radius: var(--radius-pill);
-      padding: 0.65rem 1.4rem;
-      font-size: 0.88rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
-      transition: var(--transition);
-    }
-
-    .btn-quick-book:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
-    }
-
-    /* Mobile Menu Toggle */
     .mobile-menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 1.4rem;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--border-accent);
+      color: var(--emerald-bright);
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
       cursor: pointer;
+    }
+
+    .mobile-brand-title {
+      font-family: var(--font-brand);
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: #fff;
+    }
+
+    .mobile-brand-title span {
+      color: var(--emerald-bright);
     }
 
     /* ========================================================
@@ -596,6 +597,7 @@
       display: flex;
       flex-direction: column;
       transition: var(--transition);
+      cursor: pointer;
     }
 
     .dash-pack-card:hover {
@@ -736,6 +738,43 @@
     .btn-pack-select:hover {
       background: var(--emerald-glow);
       color: #fff;
+    }
+
+    .pack-name a {
+      color: #fff;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .pack-name a:hover {
+      color: var(--emerald-bright);
+    }
+
+    .pack-actions-foot {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-pack-view {
+      background: transparent;
+      border: 1px solid var(--panel-border);
+      color: var(--text-bright);
+      padding: 0.5rem 0.85rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: var(--transition);
+    }
+
+    .btn-pack-view:hover {
+      border-color: var(--emerald-bright);
+      color: var(--emerald-bright);
+      background: rgba(16, 185, 129, 0.08);
     }
 
     /* ========================================================
@@ -1118,8 +1157,8 @@
         padding: 1.5rem 1rem;
       }
 
-      .mobile-menu-btn {
-        display: block;
+      .mobile-header-bar {
+        display: flex;
       }
     }
 
@@ -1151,6 +1190,18 @@
         <div class="brand-name">Araku <span>Trails</span></div>
       </div>
 
+      <!-- Region & Hill Weather Status Box -->
+      <div class="sidebar-status-box">
+        <div class="sidebar-status-item">
+          <i class="fa-solid fa-mountain" style="color: var(--emerald-bright);"></i>
+          <span><strong>Eastern Ghats</strong> &bull; Valley Trails</span>
+        </div>
+        <div class="sidebar-status-item">
+          <i class="fa-solid fa-cloud-sun" id="weatherIcon" style="color: var(--amber-star);"></i>
+          <span id="weatherDisplay">Hill Weather: <strong>Misty &amp; Pleasant</strong></span>
+        </div>
+      </div>
+
       <div class="console-nav-title">Navigation Console</div>
       <ul class="console-nav-list">
         <li class="console-nav-item active"><a href="#home"><i class="fa-solid fa-compass"></i> Home Spotlight</a></li>
@@ -1177,24 +1228,12 @@
     <!-- Main Workspace Area -->
     <main class="app-main">
 
-      <!-- Top Dashboard Status Bar -->
-      <header class="main-topbar">
+      <!-- Mobile Top Bar (Only visible on screens <= 1024px) -->
+      <header class="mobile-header-bar">
+        <div class="mobile-brand-title">Araku <span>Trails</span></div>
         <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Console">
           <i class="fa-solid fa-bars"></i>
         </button>
-
-        <div class="topbar-status">
-          <span><i class="fa-solid fa-location-dot" style="color: var(--emerald-bright);"></i> Vizag &amp; Araku Valley,
-            AP</span>
-          <span><i class="fa-solid fa-cloud-sun" style="color: var(--amber-star);"></i> Valley Weather: Clear &amp;
-            Pleasant</span>
-        </div>
-
-        <div class="topbar-actions">
-          <button class="btn-quick-book" onclick="openBookingModal('General Inquiry')">
-            <i class="fa-solid fa-ticket"></i> Quick Booking
-          </button>
-        </div>
       </header>
 
       <!-- Hero Spotlight Dashboard Slider -->
@@ -1210,9 +1249,6 @@
         </div>
 
         <div class="spotlight-content">
-          <div class="spotlight-tag">
-            <i class="fa-solid fa-compass"></i> Premier Travel Agency in Vizag &amp; Araku
-          </div>
           <h1 class="spotlight-title" id="heroTitle">
             Discover the Serene Beauty of <span>Araku Valley</span>
           </h1>
@@ -1221,13 +1257,13 @@
             adventure trails await you in Andhra Pradesh's majestic Eastern Ghats.
           </p>
           <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-            <a href="#packages" class="btn-quick-book" style="padding: 0.85rem 1.75rem;">
+            <a href="#packages" class="btn-pack-select" style="padding: 0.85rem 1.75rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; background: var(--emerald-glow); color: #022c15; border-color: var(--emerald-bright); font-weight: 700;">
               <i class="fa-solid fa-suitcase-rolling"></i> Explore Packages
             </a>
-            <button class="btn-pack-select" onclick="openBookingModal('Custom Itinerary')"
-              style="padding: 0.85rem 1.75rem;">
-              <i class="fa-solid fa-phone-volume"></i> Plan Custom Trip
-            </button>
+            <a href="https://wa.me/919494177921?text=Hello%20Araku%20Trails,%20I%20want%20to%20plan%20a%20trip"
+              target="_blank" class="btn-pack-select" style="padding: 0.85rem 1.6rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; border-color: rgba(37, 211, 102, 0.4); color: #25d366;">
+              <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+            </a>
           </div>
         </div>
 
@@ -1289,24 +1325,22 @@
           </div>
           <div class="portal-stats-pills">
             <span class="stat-pill">Available Circuits: <strong>4 Curated</strong></span>
-            <span class="stat-pill">Avg Rating: <strong>4.9 / 5.0</strong></span>
           </div>
         </div>
 
         <div class="dash-packages-grid">
           <!-- Package 1 -->
-          <div class="dash-pack-card">
+          <div class="dash-pack-card" onclick="window.location.href='araku-1-day-tour.html'">
             <div class="pack-thumb-box">
               <img src="images/WhatsApp%20Image%202026-10-13%20at%2012.46.40%20AM.jpeg" alt="Araku 1 Day Tour">
               <span class="pack-duration-chip"><i class="fa-regular fa-clock"></i> 1 Day Tour</span>
-              <span class="pack-score-chip"><i class="fa-solid fa-star"></i> 4.9</span>
             </div>
             <div class="pack-card-content">
               <div class="pack-features-line">
                 <span><i class="fa-solid fa-car"></i> Cab Included</span>
                 <span><i class="fa-solid fa-mountain"></i> 5 Attractions</span>
               </div>
-              <h3 class="pack-name">Araku Valley 1-Day Sightseeing</h3>
+              <h3 class="pack-name"><a href="araku-1-day-tour.html">Araku Valley 1-Day Sightseeing</a></h3>
               <p class="pack-summary">Borra Caves, Padmapuram Botanical Gardens, Tribal Museum, Chaparai Waterfalls, and
                 Coffee Plantations.</p>
               <div class="pack-card-foot">
@@ -1314,24 +1348,26 @@
                   <span class="rate-micro">Starting From</span>
                   <span class="rate-amount">₹2,499</span>
                 </div>
-                <button class="btn-pack-select" onclick="openBookingModal('Araku Valley 1-Day Tour')">Book Now</button>
+                <div class="pack-actions-foot">
+                  <a href="araku-1-day-tour.html" class="btn-pack-view" onclick="event.stopPropagation()">View Details</a>
+                  <button class="btn-pack-select" onclick="event.stopPropagation(); openBookingModal('Araku Valley 1-Day Tour')">Book Now</button>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- Package 2 -->
-          <div class="dash-pack-card">
+          <div class="dash-pack-card" onclick="window.location.href='araku-1n-2d-tour.html'">
             <div class="pack-thumb-box">
               <img src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(1).jpeg" alt="Araku 1N/2D Tour">
               <span class="pack-duration-chip"><i class="fa-regular fa-clock"></i> 1N / 2D</span>
-              <span class="pack-score-chip"><i class="fa-solid fa-star"></i> 4.9</span>
             </div>
             <div class="pack-card-content">
               <div class="pack-features-line">
                 <span><i class="fa-solid fa-hotel"></i> Resort Stay</span>
                 <span><i class="fa-solid fa-fire"></i> Tribal Bonfire</span>
               </div>
-              <h3 class="pack-name">Araku Serenity 1 Night / 2 Days</h3>
+              <h3 class="pack-name"><a href="araku-1n-2d-tour.html">Araku Serenity 1 Night / 2 Days</a></h3>
               <p class="pack-summary">Overnight luxury resort stay in Araku, tribal bonfire &amp; Dhimsa dance, coffee
                 museum, and scenic Ghat drive.</p>
               <div class="pack-card-foot">
@@ -1339,24 +1375,26 @@
                   <span class="rate-micro">Starting From</span>
                   <span class="rate-amount">₹4,999</span>
                 </div>
-                <button class="btn-pack-select" onclick="openBookingModal('Araku Serenity 1N/2D')">Book Now</button>
+                <div class="pack-actions-foot">
+                  <a href="araku-1n-2d-tour.html" class="btn-pack-view" onclick="event.stopPropagation()">View Details</a>
+                  <button class="btn-pack-select" onclick="event.stopPropagation(); openBookingModal('Araku Serenity 1N/2D')">Book Now</button>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- Package 3 -->
-          <div class="dash-pack-card">
+          <div class="dash-pack-card" onclick="window.location.href='vizag-araku-2n-3d-tour.html'">
             <div class="pack-thumb-box">
               <img src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(2).jpeg" alt="Vizag & Araku 2N/3D">
               <span class="pack-duration-chip"><i class="fa-regular fa-clock"></i> 2N / 3D</span>
-              <span class="pack-score-chip"><i class="fa-solid fa-star"></i> 5.0</span>
             </div>
             <div class="pack-card-content">
               <div class="pack-features-line">
                 <span><i class="fa-solid fa-umbrella-beach"></i> Beach + Hills</span>
                 <span><i class="fa-solid fa-cable-car"></i> Ropeway</span>
               </div>
-              <h3 class="pack-name">Vizag &amp; Araku Highlights 2N/3D</h3>
+              <h3 class="pack-name"><a href="vizag-araku-2n-3d-tour.html">Vizag &amp; Araku Highlights 2N/3D</a></h3>
               <p class="pack-summary">Rishikonda Beach, Kailasagiri Ropeway, Submarine Museum, VMRDA park, combined with
                 complete Araku Valley.</p>
               <div class="pack-card-foot">
@@ -1364,24 +1402,26 @@
                   <span class="rate-micro">Starting From</span>
                   <span class="rate-amount">₹7,499</span>
                 </div>
-                <button class="btn-pack-select" onclick="openBookingModal('Vizag & Araku 2N/3D')">Book Now</button>
+                <div class="pack-actions-foot">
+                  <a href="vizag-araku-2n-3d-tour.html" class="btn-pack-view" onclick="event.stopPropagation()">View Details</a>
+                  <button class="btn-pack-select" onclick="event.stopPropagation(); openBookingModal('Vizag & Araku 2N/3D')">Book Now</button>
+                </div>
               </div>
             </div>
           </div>
 
           <!-- Package 4 -->
-          <div class="dash-pack-card">
+          <div class="dash-pack-card" onclick="window.location.href='vizag-araku-lambasingi-3n-4d-tour.html'">
             <div class="pack-thumb-box">
               <img src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45.jpeg" alt="Lambasingi & Vanjangi">
               <span class="pack-duration-chip"><i class="fa-regular fa-clock"></i> 3N / 4D</span>
-              <span class="pack-score-chip"><i class="fa-solid fa-star"></i> 4.8</span>
             </div>
             <div class="pack-card-content">
               <div class="pack-features-line">
                 <span><i class="fa-solid fa-cloud-sun"></i> Cloud Sunrise</span>
                 <span><i class="fa-solid fa-campground"></i> Tent Stay</span>
               </div>
-              <h3 class="pack-name">Vizag, Araku &amp; Lambasingi</h3>
+              <h3 class="pack-name"><a href="vizag-araku-lambasingi-3n-4d-tour.html">Vizag, Araku &amp; Lambasingi</a></h3>
               <p class="pack-summary">Experience the "Kashmir of Andhra" (Lambasingi), Vanjangi ocean of clouds sunrise,
                 tent camping and apple orchards.</p>
               <div class="pack-card-foot">
@@ -1389,8 +1429,10 @@
                   <span class="rate-micro">Starting From</span>
                   <span class="rate-amount">₹9,999</span>
                 </div>
-                <button class="btn-pack-select" onclick="openBookingModal('Vizag, Araku & Lambasingi 3N/4D')">Book
-                  Now</button>
+                <div class="pack-actions-foot">
+                  <a href="vizag-araku-lambasingi-3n-4d-tour.html" class="btn-pack-view" onclick="event.stopPropagation()">View Details</a>
+                  <button class="btn-pack-select" onclick="event.stopPropagation(); openBookingModal('Vizag, Araku & Lambasingi 3N/4D')">Book Now</button>
+                </div>
               </div>
             </div>
           </div>
@@ -1522,67 +1564,6 @@
         </div>
       </section>
 
-      <!-- Traveller Reviews -->
-      <section>
-        <div class="section-portal-header">
-          <div class="portal-heading">
-            <h2>What Our <span>Travellers Say</span></h2>
-            <p>Real experiences and verified reviews from guests who explored Araku with us.</p>
-          </div>
-        </div>
-
-        <div class="testimonial-dash-grid">
-          <div class="review-log-card">
-            <div class="quote-badge-icon"><i class="fa-solid fa-quote-left"></i></div>
-            <p class="review-statement">
-              "Araku Trails planned our family trip with perfection! Borra caves, the picturesque coffee estates, and
-              the resort stay in the valley were mesmerizing. Very polite driver and great food recommendations!"
-            </p>
-            <div class="client-data-box">
-              <img class="client-avatar-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.43.jpeg"
-                alt="Merlyn">
-              <div>
-                <h5 class="client-name-tag">Merlyn &amp; Family</h5>
-                <span class="client-loc-tag">Family Vacation, Hyderabad</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="review-log-card">
-            <div class="quote-badge-icon"><i class="fa-solid fa-quote-left"></i></div>
-            <p class="review-statement">
-              "The Vanjangi cloud sunrise at 5:30 AM was breathtaking! They arranged the 4x4 jeep safari smoothly.
-              Everything was on schedule without any stress. Highly recommended for couples and adventurers."
-            </p>
-            <div class="client-data-box">
-              <img class="client-avatar-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(1).jpeg"
-                alt="Emmanuel">
-              <div>
-                <h5 class="client-name-tag">Emmanuel &amp; Priya</h5>
-                <span class="client-loc-tag">Couple Tour, Bangalore</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="review-log-card">
-            <div class="quote-badge-icon"><i class="fa-solid fa-quote-left"></i></div>
-            <p class="review-statement">
-              "Organized our corporate team outing of 35 people from Vizag to Araku. Clean deluxe buses, wonderful
-              tribal
-              dance arrangements, and campfire night. Everyone loved every moment!"
-            </p>
-            <div class="client-data-box">
-              <img class="client-avatar-img" src="images/WhatsApp%20Image%202026-10-12%20at%2020.30.45%20(2).jpeg"
-                alt="Yuvi">
-              <div>
-                <h5 class="client-name-tag">Yuvi Kumar</h5>
-                <span class="client-loc-tag">Corporate Lead, Chennai</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- CTA Callout Banner -->
       <section class="dash-callout-panel" id="contact">
         <div class="callout-text">
@@ -1651,6 +1632,45 @@
   <script>
     // Set current year
     document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Live Araku Valley Weather API (Open-Meteo Free API: 18.3273° N, 82.8775° E)
+    async function fetchArakuWeather() {
+      const displayElem = document.getElementById('weatherDisplay');
+      const iconElem = document.getElementById('weatherIcon');
+      try {
+        const response = await fetch(
+          "https://api.open-meteo.com/v1/forecast?latitude=18.3273&longitude=82.8775&current=temperature_2m,weather_code&timezone=auto"
+        );
+        if (!response.ok) throw new Error("Weather request failed");
+        const data = await response.json();
+        const temp = Math.round(data.current.temperature_2m);
+        const code = data.current.weather_code;
+
+        // Interpret WMO weather codes with generic hill weather tone
+        let condition = "Misty & Pleasant";
+        let iconClass = "fa-cloud-sun";
+        if (code === 0) { condition = "Clear & Pleasant"; iconClass = "fa-sun"; }
+        else if (code === 1 || code === 2) { condition = "Misty & Pleasant"; iconClass = "fa-cloud-sun"; }
+        else if (code === 3) { condition = "Cool & Overcast"; iconClass = "fa-cloud"; }
+        else if (code >= 45 && code <= 48) { condition = "Misty & Foggy"; iconClass = "fa-smog"; }
+        else if (code >= 51 && code <= 67) { condition = "Cool Hill Showers"; iconClass = "fa-cloud-rain"; }
+        else if (code >= 80 && code <= 82) { condition = "Mountain Rain"; iconClass = "fa-cloud-showers-heavy"; }
+        else if (code >= 95) { condition = "Ghat Thunderstorm"; iconClass = "fa-cloud-bolt"; }
+
+        if (displayElem) {
+          displayElem.innerHTML = `Hill Weather: <strong>${condition} (${temp}°C)</strong>`;
+        }
+        if (iconElem) {
+          iconElem.className = `fa-solid ${iconClass}`;
+        }
+      } catch (err) {
+        console.log("Weather API fallback:", err);
+        if (displayElem) {
+          displayElem.innerHTML = `Hill Weather: <strong>Misty &amp; Pleasant</strong>`;
+        }
+      }
+    }
+    fetchArakuWeather();
 
     // Default min date for inputs to today
     const today = new Date().toISOString().split('T')[0];
