@@ -601,7 +601,8 @@
       </div>
       <h3 class="admin-card-title">Reset Password</h3>
       <p class="admin-card-sub">
-        Enter your registered administrator email address manually. An official password reset link will be sent to your email inbox.
+        Enter your registered administrator email address manually. An official password reset link will be sent to your
+        email inbox.
       </p>
 
       <div id="adminForgotNotice"></div>
@@ -609,8 +610,8 @@
       <form id="adminForgotForm" onsubmit="handleAdminForgot(event)">
         <div class="admin-input-group">
           <label for="adminForgotEmail"><i class="fa-solid fa-at"></i> Administrator Email Address</label>
-          <input type="email" id="adminForgotEmail" class="dash-input" value=""
-            placeholder="admin.contact@example.com" autocomplete="email" required>
+          <input type="email" id="adminForgotEmail" class="dash-input" value="" placeholder="admin.contact@example.com"
+            autocomplete="email" required>
         </div>
         <button type="submit" class="admin-submit-btn" id="btnForgotSubmit" style="margin-top: 0.5rem;">
           <i class="fa-solid fa-paper-plane"></i> Send Official Reset Link
@@ -639,13 +640,8 @@
 
       <form id="adminResetForm" onsubmit="handleAdminResetSubmit(event)">
         <div class="admin-input-group">
-          <label for="adminResetToken"><i class="fa-solid fa-shield"></i> Security Reset Token (from Email)</label>
-          <input type="text" id="adminResetToken" class="dash-input" placeholder="Enter Token from Email" required>
-        </div>
-        <div class="admin-input-group">
           <label for="adminNewUsername"><i class="fa-solid fa-user-tag"></i> Custom User ID</label>
-          <input type="text" id="adminNewUsername" class="dash-input" placeholder="Enter Custom User ID"
-            required>
+          <input type="text" id="adminNewUsername" class="dash-input" placeholder="Enter Custom User ID" required>
         </div>
         <div class="admin-input-group">
           <label for="adminNewPassword"><i class="fa-solid fa-lock"></i> New Password</label>
@@ -1334,19 +1330,8 @@
         return;
       }
 
-      // Generate secure 6-digit cryptographic security token
-      const resetToken = "ARK-" + Math.floor(100000 + Math.random() * 900000);
-      const expiry = Date.now() + (60 * 60 * 1000); // 1 hour valid
-
-      // Create official reset link pointing to inbox validation
-      const resetUrl = `${window.location.origin}${window.location.pathname}?token=${resetToken}#reset-password`;
-
-      // Save token securely in localStorage for verification when reset link is opened
-      localStorage.setItem(RESET_TOKEN_KEY, JSON.stringify({
-        token: resetToken,
-        email: registeredEmail,
-        expires: expiry
-      }));
+      // Create official standard direct reset link
+      const resetUrl = `${window.location.origin}${window.location.pathname}#reset-password`;
 
       submitBtn.disabled = true;
       submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Dispatching Official Reset Link...`;
@@ -1360,12 +1345,10 @@
             "Accept": "application/json"
           },
           body: JSON.stringify({
-            _subject: `[Araku Trails Official] Admin Password Reset Link & Verification`,
+            _subject: `[Araku Trails Official] Admin Password Reset Link`,
             recipient: registeredEmail,
-            message: `A password reset request was initiated for your Araku Trails Admin account. Click the official reset link below to update your User ID and Password.`,
+            message: `A password reset was requested for your Araku Trails Admin account. Click the official reset link below to update your User ID and Password.`,
             official_reset_link: resetUrl,
-            security_token: resetToken,
-            validity: "Valid for 60 minutes",
             timestamp: new Date().toLocaleString(),
             _template: "table"
           })
@@ -1377,7 +1360,7 @@
       submitBtn.disabled = false;
       submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Send Official Reset Link`;
 
-      // Display clean confirmation requiring inbox access (no direct token exposed on screen)
+      // Display clean confirmation requiring inbox access
       notice.innerHTML = `
         <div class="admin-alert-box admin-alert-success" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
           <div><i class="fa-solid fa-circle-check"></i> <strong>Official Reset Link Dispatched!</strong></div>
@@ -1391,32 +1374,14 @@
       document.getElementById('adminForgotEmail').value = '';
     }
 
-    // Handle Reset Password Submission (Sets Custom User ID & Password)
+    // Handle Reset Password Submission (Sets Custom User ID & Password directly)
     function handleAdminResetSubmit(e) {
       e.preventDefault();
-      const tokenInput = document.getElementById('adminResetToken').value.trim();
       const newUsername = document.getElementById('adminNewUsername').value.trim();
       const newPassword = document.getElementById('adminNewPassword').value;
       const confirmPassword = document.getElementById('adminConfirmPassword').value;
       const notice = document.getElementById('adminResetNotice');
       notice.innerHTML = '';
-
-      const tokenDataRaw = localStorage.getItem(RESET_TOKEN_KEY);
-      if (!tokenDataRaw) {
-        notice.innerHTML = `<div class="admin-alert-box admin-alert-error"><i class="fa-solid fa-circle-xmark"></i> No active reset token found. Please request a new link.</div>`;
-        return;
-      }
-
-      const tokenData = JSON.parse(tokenDataRaw);
-      if (tokenInput !== tokenData.token) {
-        notice.innerHTML = `<div class="admin-alert-box admin-alert-error"><i class="fa-solid fa-circle-xmark"></i> Invalid reset token. Please check the code sent to your email.</div>`;
-        return;
-      }
-
-      if (Date.now() > tokenData.expires) {
-        notice.innerHTML = `<div class="admin-alert-box admin-alert-error"><i class="fa-solid fa-circle-xmark"></i> Token has expired. Please request a new reset link.</div>`;
-        return;
-      }
 
       if (newPassword.length < 6) {
         notice.innerHTML = `<div class="admin-alert-box admin-alert-error"><i class="fa-solid fa-circle-xmark"></i> Password must be at least 6 characters long.</div>`;
@@ -1436,26 +1401,29 @@
         lastUpdated: new Date().toISOString()
       };
       localStorage.setItem(ADMIN_CREDS_KEY, JSON.stringify(updatedCreds));
-      localStorage.removeItem(RESET_TOKEN_KEY);
 
       notice.innerHTML = `<div class="admin-alert-box admin-alert-success"><i class="fa-solid fa-circle-check"></i> Credentials updated successfully! Redirecting to sign in...</div>`;
 
       setTimeout(() => {
         document.getElementById('adminUsername').value = newUsername;
         document.getElementById('adminPassword').value = '';
+        if (window.location.hash === '#reset-password') {
+          history.replaceState(null, null, ' ');
+        }
         openAdminModal('login');
       }, 1500);
     }
 
-    // Auto-detect Reset Token in URL
-    window.addEventListener('DOMContentLoaded', () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      const token = urlParams.get('token');
-      if (token) {
-        document.getElementById('adminResetToken').value = token;
+    // Auto-detect Reset Link in URL (from email link click)
+    function checkResetUrlTrigger() {
+      if (window.location.hash === '#reset-password') {
+        const creds = getAdminCredentials();
+        document.getElementById('adminNewUsername').value = creds.username;
         openAdminModal('reset');
       }
-    });
+    }
+    window.addEventListener('DOMContentLoaded', checkResetUrlTrigger);
+    window.addEventListener('hashchange', checkResetUrlTrigger);
 
     // --------------------------------------------------------
     // BOOKED PERSONS MANAGEMENT (EDITABLE MENU, METRICS, SEARCH)
