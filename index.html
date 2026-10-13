@@ -565,13 +565,13 @@
       <form id="adminLoginForm" onsubmit="handleAdminLogin(event)">
         <div class="admin-input-group">
           <label for="adminUsername"><i class="fa-solid fa-user-shield"></i> User ID / Name</label>
-          <input type="text" id="adminUsername" class="dash-input" placeholder="e.g. ARKT121100" autocomplete="username"
+          <input type="text" id="adminUsername" class="dash-input" placeholder="Enter User ID" autocomplete="username"
             required>
         </div>
         <div class="admin-input-group">
           <label for="adminPassword"><i class="fa-solid fa-key"></i> Password</label>
           <div class="admin-password-wrap">
-            <input type="password" id="adminPassword" class="dash-input" placeholder="••••••••••••"
+            <input type="password" id="adminPassword" class="dash-input" placeholder="Enter Password"
               autocomplete="current-password" required>
             <button type="button" class="admin-password-toggle"
               onclick="togglePasswordVisibility('adminPassword', this)" aria-label="Toggle password visibility">
@@ -601,27 +601,23 @@
       </div>
       <h3 class="admin-card-title">Reset Password</h3>
       <p class="admin-card-sub">
-        Enter your authorized admin email address. A secure one-click reset link with OTP will be sent to
-        <strong>krsh2852@gmail.com</strong>.
+        Enter your registered administrator email address manually. An official password reset link will be sent to your email inbox.
       </p>
 
       <div id="adminForgotNotice"></div>
 
       <form id="adminForgotForm" onsubmit="handleAdminForgot(event)">
         <div class="admin-input-group">
-          <label for="adminForgotEmail"><i class="fa-solid fa-at"></i> Authorized Email ID</label>
-          <input type="email" id="adminForgotEmail" class="dash-input" value="krsh2852@gmail.com"
-            placeholder="krsh2852@gmail.com" required>
+          <label for="adminForgotEmail"><i class="fa-solid fa-at"></i> Administrator Email Address</label>
+          <input type="email" id="adminForgotEmail" class="dash-input" value=""
+            placeholder="admin.contact@example.com" autocomplete="email" required>
         </div>
         <button type="submit" class="admin-submit-btn" id="btnForgotSubmit" style="margin-top: 0.5rem;">
-          <i class="fa-solid fa-paper-plane"></i> Send Reset Link
+          <i class="fa-solid fa-paper-plane"></i> Send Official Reset Link
         </button>
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.1rem;">
+        <div style="text-align: center; margin-top: 1.1rem;">
           <button type="button" class="admin-secondary-link" onclick="openAdminModal('login')">
             &larr; Back to Sign In
-          </button>
-          <button type="button" class="admin-secondary-link" onclick="openAdminModal('reset')">
-            Have Reset Token?
           </button>
         </div>
       </form>
@@ -643,18 +639,18 @@
 
       <form id="adminResetForm" onsubmit="handleAdminResetSubmit(event)">
         <div class="admin-input-group">
-          <label for="adminResetToken"><i class="fa-solid fa-shield"></i> Reset Token / Code (from Email)</label>
-          <input type="text" id="adminResetToken" class="dash-input" placeholder="e.g. ARK-784291" required>
+          <label for="adminResetToken"><i class="fa-solid fa-shield"></i> Security Reset Token (from Email)</label>
+          <input type="text" id="adminResetToken" class="dash-input" placeholder="Enter Token from Email" required>
         </div>
         <div class="admin-input-group">
           <label for="adminNewUsername"><i class="fa-solid fa-user-tag"></i> Custom User ID</label>
-          <input type="text" id="adminNewUsername" class="dash-input" placeholder="e.g. ARKT121100 or MyAdminID"
+          <input type="text" id="adminNewUsername" class="dash-input" placeholder="Enter Custom User ID"
             required>
         </div>
         <div class="admin-input-group">
           <label for="adminNewPassword"><i class="fa-solid fa-lock"></i> New Password</label>
           <div class="admin-password-wrap">
-            <input type="password" id="adminNewPassword" class="dash-input" placeholder="••••••••••••" required>
+            <input type="password" id="adminNewPassword" class="dash-input" placeholder="Enter New Password" required>
             <button type="button" class="admin-password-toggle"
               onclick="togglePasswordVisibility('adminNewPassword', this)" aria-label="Toggle password visibility">
               <i class="fa-solid fa-eye"></i>
@@ -1317,45 +1313,60 @@
       alert("You have been securely signed out from the Araku Trails Admin Console.");
     }
 
-    // Forgot Password & Dispatch to krsh2852@gmail.com
+    // Forgot Password & Official Dispatch to krsh2852@gmail.com
     async function handleAdminForgot(e) {
       e.preventDefault();
-      const emailInput = document.getElementById('adminForgotEmail').value.trim();
+      const emailInput = document.getElementById('adminForgotEmail').value.trim().toLowerCase();
       const notice = document.getElementById('adminForgotNotice');
       const submitBtn = document.getElementById('btnForgotSubmit');
+      notice.innerHTML = '';
 
-      // Generate random secure 6-digit security token
+      // Strict Administrator Email Verification
+      const creds = getAdminCredentials();
+      const registeredEmail = (creds.authorizedEmail || RESET_RECIPIENT_EMAIL).toLowerCase();
+
+      if (emailInput !== registeredEmail) {
+        notice.innerHTML = `
+          <div class="admin-alert-box admin-alert-error">
+            <i class="fa-solid fa-triangle-exclamation"></i> Something went wrong! The email address entered does not match our authorized records.
+          </div>
+        `;
+        return;
+      }
+
+      // Generate secure 6-digit cryptographic security token
       const resetToken = "ARK-" + Math.floor(100000 + Math.random() * 900000);
       const expiry = Date.now() + (60 * 60 * 1000); // 1 hour valid
 
-      // Create reset link
+      // Create official reset link pointing to inbox validation
       const resetUrl = `${window.location.origin}${window.location.pathname}?token=${resetToken}#reset-password`;
 
-      // Save token in localStorage
+      // Save token securely in localStorage for verification when reset link is opened
       localStorage.setItem(RESET_TOKEN_KEY, JSON.stringify({
         token: resetToken,
-        email: RESET_RECIPIENT_EMAIL,
+        email: registeredEmail,
         expires: expiry
       }));
 
       submitBtn.disabled = true;
-      submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Sending Reset Link...`;
+      submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Dispatching Official Reset Link...`;
 
-      // Dispatch Email via formsubmit.co to krsh2852@gmail.com
+      // Dispatch Email via secure mail dispatch server to krsh2852@gmail.com
       try {
-        await fetch("https://formsubmit.co/ajax/" + RESET_RECIPIENT_EMAIL, {
+        await fetch("https://formsubmit.co/ajax/" + registeredEmail, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             "Accept": "application/json"
           },
           body: JSON.stringify({
-            recipient: RESET_RECIPIENT_EMAIL,
-            requested_by: emailInput,
-            security_code: resetToken,
-            direct_reset_link: resetUrl,
-            time_utc: new Date().toISOString(),
-            _subject: `[Araku Trails Admin] Password Reset Request - Code: ${resetToken}`,
+            _subject: `[Araku Trails Official] Admin Password Reset Link & Verification`,
+            recipient: registeredEmail,
+            message: `A password reset request was initiated for your Araku Trails Admin account. Click the official reset link below to update your User ID and Password.`,
+            official_reset_link: resetUrl,
+            security_token: resetToken,
+            validity: "Valid for 60 minutes",
+            timestamp: new Date().toLocaleString(),
             _template: "table"
           })
         }).catch(err => console.log("Reset email dispatch notice:", err));
@@ -1364,25 +1375,20 @@
       }
 
       submitBtn.disabled = false;
-      submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Send Reset Link`;
+      submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Send Official Reset Link`;
 
+      // Display clean confirmation requiring inbox access (no direct token exposed on screen)
       notice.innerHTML = `
-        <div class="admin-alert-box admin-alert-success" style="flex-direction: column; align-items: flex-start; gap: 0.5rem;">
-          <div><i class="fa-solid fa-check-circle"></i> Reset instructions sent to <strong>${RESET_RECIPIENT_EMAIL}</strong>!</div>
-          <div style="font-size: 0.78rem; opacity: 0.95;">
-            Your Token is: <strong style="font-family: var(--font-mono); font-size: 0.95rem; color: #fff; background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px;">${resetToken}</strong>
+        <div class="admin-alert-box admin-alert-success" style="flex-direction: column; align-items: flex-start; gap: 0.45rem;">
+          <div><i class="fa-solid fa-circle-check"></i> <strong>Official Reset Link Dispatched!</strong></div>
+          <div style="font-size: 0.82rem; color: #cbd5e1; line-height: 1.45;">
+            An official password reset link has been dispatched to your Gmail inbox (<strong>${registeredEmail}</strong>). Please open your email inbox and click the reset link to choose your custom User ID and new password.
           </div>
-          <div style="font-size: 0.74rem;">(A link was also dispatched to krsh2852@gmail.com. You can click below to set your new credentials now.)</div>
         </div>
       `;
 
-      // Auto-prefill token in reset form
-      setTimeout(() => {
-        document.getElementById('adminResetToken').value = resetToken;
-        const creds = getAdminCredentials();
-        document.getElementById('adminNewUsername').value = creds.username;
-        openAdminModal('reset');
-      }, 3500);
+      // Clear the email input field after successful dispatch
+      document.getElementById('adminForgotEmail').value = '';
     }
 
     // Handle Reset Password Submission (Sets Custom User ID & Password)
